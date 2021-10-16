@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#889FE3"
+    android:gravity="center">
+
+    <EditText
+        android:id="@+id/tool_page_question"
+        android:layout_width="304dp"
+        android:layout_height="80dp"
+        android:layout_margin="20dp"
+        android:hint="@string/tool_page_editT"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        android:padding="20dp"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="45dp"
+        tools:layout_editor_absoluteY="116dp" />
+
+    <Button
+        android:id="@+id/tool_page_button_next"
+        android:layout_width="309dp"
+        android:layout_height="wrap_content"
+        android:background="#DADA34"
+        android:text="@string/string_main_page_button"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        />
+
+
+</LinearLayout>

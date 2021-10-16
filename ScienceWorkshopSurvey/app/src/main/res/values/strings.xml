@@ -1,3 +1,15 @@
 <resources>
+
     <string name="app_name">Science Workshop Survey</string>
+    <string name="enter_project_name">Enter Project Name</string>
+    <string name="enter_first_name">Enter First Name</string>
+    <string name="Main_Page_Button" />
+    <string name="string_main_page_button"> Next </string>
+    <string name="todo">TODO</string>
+    <string name="often">How often do you come?</string>
+    <string name="students_current_grade">What grade are you in?</string>
+    <string name="transportation">How did you arrive to the workshop?</string>
+    <string name="tool_page_editT">What tools did you use?</string>
+    <string name="togglebutton">ToggleButton</string>
+
 </resources>
