@@ -21,3 +21,5 @@ Android project to create a survey application for City of Watsonville Environme
 #### List of Technologies
 - Android
 https://www.android.com/
+- Android Room
+- https://developer.android.com/jetpack/androidx/releases/room?gclid=CjwKCAjwq9mLBhB2EiwAuYdMtTiGkpznSI3WEzBEp6sf-VE8QmnnEBUTVfgA7WKNauNugdEjWcEgJhoCgb4QAvD_BwE&gclsrc=aw.ds
