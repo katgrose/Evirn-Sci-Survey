@@ -20,42 +20,42 @@ public class Survey {
     @ColumnInfo(name = "endDate")
     private String mendDate;
     //
-    public Survey(int surveyID, String description, String startDate, String endDate){
-        this.msurveyID = surveyID;
-        this.mdescription = description;
-        this.mstartDate = startDate;
-        this.mendDate = endDate;
+    public Survey(int msurveyID, String mdescription, String mstartDate, String mendDate){
+        this.msurveyID = msurveyID;
+        this.mdescription = mdescription;
+        this.mstartDate = mstartDate;
+        this.mendDate = mendDate;
     }
 
-    public int getSurveyID() {
+    public int getMsurveyID() {
         return msurveyID;
     }
 
-    public void setSurveyID(int surveyID) {
-        this.msurveyID = surveyID;
+    public void setMsurveyID(int msurveyID) {
+        this.msurveyID = msurveyID;
     }
 
-    public String getDescription() {
+    public String getMdescription() {
         return mdescription;
     }
 
-    public void setDescription(String description) {
-        this.mdescription = description;
+    public void setMdescription(String mdescription) {
+        this.mdescription = mdescription;
     }
 
-    public String getStartDate() {
+    public String getMstartDate() {
         return mstartDate;
     }
 
-    public void setStartDate(String startDate) {
-        this.mstartDate = startDate;
+    public void setMstartDate(String mstartDate) {
+        this.mstartDate = mstartDate;
     }
 
-    public String getEndDate() {
+    public String getMendDate() {
         return mendDate;
     }
 
-    public void setEndDate(String endDate) {
-        this.mendDate = endDate;
+    public void setMendDate(String mendDate) {
+        this.mendDate = mendDate;
     }
 }
