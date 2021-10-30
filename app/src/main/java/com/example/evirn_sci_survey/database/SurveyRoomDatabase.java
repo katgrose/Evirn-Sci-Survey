@@ -1,9 +1,12 @@
-package com.example.evirn_sci_survey;
+package com.example.evirn_sci_survey.database;
 
 import android.content.Context;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+
+import com.example.evirn_sci_survey.Survey;
+
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 

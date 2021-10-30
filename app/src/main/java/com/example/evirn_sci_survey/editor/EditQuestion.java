@@ -1,4 +1,4 @@
-package com.example.evirn_sci_survey;
+package com.example.evirn_sci_survey.editor;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.evirn_sci_survey.Question;
+import com.example.evirn_sci_survey.R;
 import com.example.evirn_sci_survey.database.AppDatabase;
 import com.example.evirn_sci_survey.database.QuestionDAO;
 

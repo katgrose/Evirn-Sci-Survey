@@ -23,7 +23,7 @@
             android:value="true" />
 
         <activity
-            android:name=".EditQuestion"
+            android:name=".editor.EditQuestion"
             android:label="@string/title_activity_edit_question">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,7 +31,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".EditQuestions" />
+        <activity android:name=".editor.EditQuestions" />
         <activity android:name=".QuestionDisplay" />
         <activity android:name=".MainActivity">
             <intent-filter>

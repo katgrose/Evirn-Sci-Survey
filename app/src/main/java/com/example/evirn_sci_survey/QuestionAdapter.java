@@ -16,6 +16,8 @@ import androidx.room.Room;
 
 import com.example.evirn_sci_survey.database.AppDatabase;
 import com.example.evirn_sci_survey.database.QuestionDAO;
+import com.example.evirn_sci_survey.editor.EditQuestion;
+import com.example.evirn_sci_survey.editor.EditQuestions;
 
 import java.util.ArrayList;
 import java.util.List;
