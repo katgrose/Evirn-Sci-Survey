@@ -10,9 +10,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.example.evirn_sci_survey.EditListItem;
+import com.example.evirn_sci_survey.ListAdapter;
 import com.example.evirn_sci_survey.MainActivity;
 import com.example.evirn_sci_survey.Question;
-import com.example.evirn_sci_survey.QuestionAdapter;
 import com.example.evirn_sci_survey.R;
 import com.example.evirn_sci_survey.database.AppDatabase;
 import com.example.evirn_sci_survey.database.QuestionDAO;
@@ -26,7 +27,7 @@ public class EditQuestions extends AppCompatActivity {
 
     QuestionDAO questionDAO;
 
-    QuestionAdapter adapter;
+    ListAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,8 +61,8 @@ public class EditQuestions extends AppCompatActivity {
     }
 
     public void refreshDisplay() {
-        ArrayList<Question> itemList = new ArrayList<>(questionDAO.getQuestions());
-        adapter = new QuestionAdapter(this, itemList);
+        ArrayList<EditListItem> itemList = new ArrayList<>(questionDAO.getQuestions());
+        adapter = new ListAdapter(this, itemList);
         mListView.setAdapter(adapter);
     }
 

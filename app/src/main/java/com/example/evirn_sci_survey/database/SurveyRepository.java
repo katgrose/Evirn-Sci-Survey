@@ -38,4 +38,10 @@ public class SurveyRepository {
         });
     }
 
+    public void delete(Survey survey) {
+        SurveyRoomDatabase.databaseWriteExecutor.execute(() -> {
+            mSurveyDao.delete(survey);
+        });
+    }
+
 }
