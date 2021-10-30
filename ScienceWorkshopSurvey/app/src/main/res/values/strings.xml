@@ -11,5 +11,11 @@
     <string name="transportation">How did you arrive to the workshop?</string>
     <string name="tool_page_editT">What tools did you use?</string>
     <string name="togglebutton">ToggleButton</string>
+    <string name="Scssors">Scissors</string>
+    <string name="Tape">Tape</string>
+    <string name="Pen">Pen </string>
+    <string name="Screw_Driver">Screw Driver</string>
+    <string name="Enjoyment_level">On a scale from 0 to 5 how much did you enjoy the project"</string>
+    <string name="Zero">0</string>
 
 </resources>

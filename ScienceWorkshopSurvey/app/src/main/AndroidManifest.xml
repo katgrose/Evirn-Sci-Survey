@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ScienceWorkshopSurvey">
-        <activity android:name=".Tools_page"></activity>
+        <activity android:name=".Enjoyment_level"></activity>
+        <activity android:name=".Tools_page" />
         <activity android:name=".Transportation_page" />
         <activity android:name=".Page_02" />
         <activity android:name=".MainActivity">
