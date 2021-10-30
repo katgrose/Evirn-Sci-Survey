@@ -4,30 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".QuestionDisplay">
 
-    <Button
-        android:id="@+id/start_survey_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/start_survey"
+    <TextView
+        android:id="@+id/question_lbl"
+        android:layout_width="250dp"
+        android:layout_height="150dp"
+        android:text="@string/current_question_text"
+        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.453"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.404" />
+        app:layout_constraintVertical_bias="0.278" />
 
     <Button
-        android:id="@+id/edit_question_btn"
+        android:id="@+id/nextBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/edit_questions"
+        android:text="@string/next"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.474"
+        app:layout_constraintHorizontal_bias="0.795"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.562" />
+        app:layout_constraintVertical_bias="0.834" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
