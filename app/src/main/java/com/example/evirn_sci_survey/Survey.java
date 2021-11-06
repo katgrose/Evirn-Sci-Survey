@@ -58,4 +58,5 @@ public class Survey {
     public void setMendDate(String mendDate) {
         this.mendDate = mendDate;
     }
+
 }
