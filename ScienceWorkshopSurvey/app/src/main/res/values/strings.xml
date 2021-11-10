@@ -15,7 +15,10 @@
     <string name="Tape">Tape</string>
     <string name="Pen">Pen </string>
     <string name="Screw_Driver">Screw Driver</string>
-    <string name="Enjoyment_level">On a scale from 0 to 5 how much did you enjoy the project"</string>
+    <string name="Enjoyment_level">On a scale from 0 to 5
+        <br />how much  did you enjoy the project</string>
     <string name="Zero">0</string>
+    <string name="status">Bad : 0</string>
+    <string name="cam_finish">Take Picture</string>
 
 </resources>

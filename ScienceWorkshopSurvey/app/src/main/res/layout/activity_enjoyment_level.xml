@@ -8,86 +8,56 @@
     android:background="#889FE3"
     android:gravity="center">
 
-    <TextView
-        android:id="@+id/tool_page_question"
-        android:layout_width="401dp"
-        android:layout_height="112dp"
-        android:layout_row="0"
-        android:layout_column="8"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="148dp"
-        android:elegantTextHeight="false"
-        android:hint="@string/Enjoyment_level"
-        android:importantForAutofill="no"
-        android:inputType="text"
-        android:padding="20dp"
-        android:scrollHorizontally="false"
-        android:textAlignment="viewStart"
-        android:textColor="#000000"
-        android:textSize="14sp"
-        tools:layout_editor_absoluteX="45dp"
-        tools:layout_editor_absoluteY="116dp" />
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:gravity="center"
-        >
+        android:orientation="vertical">
 
-        <CheckBox
-            android:id="@+id/Scissors"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+        <TextView
+            android:id="@+id/tool_page_question"
+            android:layout_width="392dp"
+            android:layout_height="156dp"
+            android:gravity="center"
+            android:scrollHorizontally="false"
+            android:text="@string/Enjoyment_level"
 
+            android:textSize="23dp" />
 
-            android:text="@string/Scssors" />
+        <TextView
+            android:id="@+id/number_string"
+            android:layout_width="185dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="60dp"
+            android:paddingLeft="30dp"
+            android:text="@string/status"
+            android:textAlignment="center"
+            android:textSize="20dp" />
+
+        <SeekBar
+            android:id="@+id/seekBar_0_5"
+            android:layout_width="298dp"
+            android:layout_height="52dp"
+            android:layout_marginTop="0dp"
+            android:max="5"
+            />
+
+        <Button
+            android:id="@+id/Enjoyment_button"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_row="5"
+            android:layout_column="9"
+            android:layout_marginStart="92dp"
+            android:layout_marginTop="92dp"
+            android:layout_marginEnd="92dp"
+            android:background="#DADA34"
+            android:text="@string/string_main_page_button"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF" />
+
 
     </LinearLayout>
-
-
-
-
-
-    <Button
-        android:id="@+id/tool_page_button_next"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_row="5"
-        android:layout_column="9"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="90dp"
-        android:background="#DADA34"
-        android:text="@string/string_main_page_button"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF" />
-
-    <CheckBox
-        android:id="@+id/Pen"
-        android:layout_width="117dp"
-        android:layout_height="50dp"
-        android:layout_row="4"
-        android:layout_column="9"
-        android:text="@string/Pen" />
-
-    <CheckBox
-        android:id="@+id/Screw_Driver"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_row="4"
-        android:layout_column="9"
-
-
-        android:layout_marginBottom="-82dp"
-        android:text="@string/Screw_Driver" />
-
-    <CheckBox
-        android:id="@+id/Tape"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="-327dp"
-        android:text="@string/Zero" />
-
 
 </RelativeLayout>

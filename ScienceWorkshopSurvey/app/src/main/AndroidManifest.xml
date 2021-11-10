@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="edu.csumb.bamagana.scienceworkshopsurvey">
 
+    <uses-permission android:name="android.permission.CAMERA"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ScienceWorkshopSurvey">
-        <activity android:name=".Enjoyment_level"></activity>
+        <activity android:name=".Camera_Interaction"></activity>
+        <activity android:name=".Enjoyment_level" />
         <activity android:name=".Tools_page" />
         <activity android:name=".Transportation_page" />
         <activity android:name=".Page_02" />
