@@ -1,5 +1,10 @@
 package com.example.evirn_sci_survey;
-
+/*
+    Title: Survey.java
+    Abstract: This is an entity(table) that houses all surveys including its Id, description, startDate, and endDate.
+    Date: 11/10/2021
+    Author:EnvironSciTeam2K21
+ */
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -8,8 +13,8 @@ import androidx.room.PrimaryKey;
 public class Survey {
     //Generates a primary key automatically
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "surveyID")
-    private int msurveyID;
+    @ColumnInfo(name = "surveyId")
+    private int msurveyId;
 
     @ColumnInfo(name = "description")
     private String mdescription;
@@ -20,19 +25,19 @@ public class Survey {
     @ColumnInfo(name = "endDate")
     private String mendDate;
     //
-    public Survey(int msurveyID, String mdescription, String mstartDate, String mendDate){
-        this.msurveyID = msurveyID;
+    public Survey(int msurveyId, String mdescription, String mstartDate, String mendDate){
+        this.msurveyId = msurveyId;
         this.mdescription = mdescription;
         this.mstartDate = mstartDate;
         this.mendDate = mendDate;
     }
 
-    public int getMsurveyID() {
-        return msurveyID;
+    public int getMsurveyId() {
+        return msurveyId;
     }
 
-    public void setMsurveyID(int msurveyID) {
-        this.msurveyID = msurveyID;
+    public void setMsurveyId(int msurveyId) {
+        this.msurveyId = msurveyId;
     }
 
     public String getMdescription() {

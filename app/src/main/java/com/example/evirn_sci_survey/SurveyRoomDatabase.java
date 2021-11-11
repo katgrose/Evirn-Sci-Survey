@@ -1,5 +1,10 @@
 package com.example.evirn_sci_survey;
-
+/*
+    Title: SurveyRoomDatabase.java
+    Abstract: This is a Java class that houses the database set up. All entities declared are in their final forms.
+    Date: 11/10/2021
+    Author:EnvironSciTeam2K21
+ */
 import android.content.Context;
 import androidx.room.Database;
 import androidx.room.Room;
@@ -7,7 +12,6 @@ import androidx.room.RoomDatabase;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-//Database setup
 @Database(entities = {Survey.class, SurveyQuestion.class, SurveyQuestionAnswer.class, Answer.class}, version = 1, exportSchema = false)
 public abstract class SurveyRoomDatabase extends RoomDatabase {
 

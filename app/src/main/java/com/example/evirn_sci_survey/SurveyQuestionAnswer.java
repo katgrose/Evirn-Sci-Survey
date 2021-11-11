@@ -1,19 +1,29 @@
 package com.example.evirn_sci_survey;
-
+/*
+    Title: SurveyQuestionAnswer.java
+    Abstract: This is an entity(table) includes the ability to fill in the offered answer.
+    Date: 11/10/2021
+    Author:EnvironSciTeam2K21
+ */
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Index;
+
 @Entity(tableName = "surveyquestionanswer",
+        //Index to not trigger full data scan of parent table upon changes
+        //unique property : prevents a table from having two rows that contain the same set of values in columns.
+        indices = {@Index(value = {"surveyId", "questionId"}, unique = true)},
         //Primary Composite key
-        primaryKeys = {"surveyID_fkSQA", "questionID_fkSQ", "surveyQA_ID"},
+        primaryKeys = {"offeredAnsId", "questionId", "surveyId"},
         //Foreign Composite key
         foreignKeys = {
-//        @ForeignKey(
-//                entity = SurveyQuestion.class,
-//                parentColumns = {"surveyID_fkSQ", "questionID_fkSQ"},
-//                childColumns = {"surveyID_fkSQA", "questionID_fkSQA"}
-//
-//        )
+        @ForeignKey(
+                entity = SurveyQuestion.class,
+                parentColumns = {"surveyId", "questionId"},
+                childColumns = {"surveyId", "questionId"}
+
+       )
 })
 public class SurveyQuestionAnswer {
 /*
@@ -22,57 +32,51 @@ public class SurveyQuestionAnswer {
     becomes the composite primary key
      (including its grand children fields).
  */
-    @ColumnInfo
-    private int surveyID_fkSQA;
+    @ColumnInfo(name = "surveyId")
+    private int msurveyId;
 
-    @ColumnInfo
-    private int questionID_fkSQ;
+    @ColumnInfo(name = "questionId")
+    private int mquestionId;
 
-    @ColumnInfo
-    private int questionID_fkSQA;
-
-    @ColumnInfo
-    private int surveyQA_ID;
+    @ColumnInfo(name = "offeredAnsId")
+    private  int mofferedAnsId;
 
     @ColumnInfo(name = "offeredAnsText")
     private String mofferedAnsText;
 
-    public SurveyQuestionAnswer(int surveyID_fkSQA, int questionID_fkSQ, int surveyQA_ID, String mofferedAnsText ){
-        this.surveyID_fkSQA = surveyID_fkSQA;
-        this.questionID_fkSQ = questionID_fkSQ;
-        this.surveyQA_ID = surveyQA_ID;
+    public SurveyQuestionAnswer(int msurveyId, int mquestionId, int mofferedAnsId, String mofferedAnsText ){
+        this.msurveyId = msurveyId;
+        this.mquestionId = mquestionId;
+        this.mofferedAnsId = mofferedAnsId;
         this.mofferedAnsText = mofferedAnsText;
     }
 
-    public int getQuestionID_fkSQ() {
-        return questionID_fkSQ;
+    public int getMsurveyId() {
+        return msurveyId;
     }
 
-    public void setQuestionID_fkSQ(int questionID_fkSQ) { this.questionID_fkSQ = questionID_fkSQ; }
-
-    public int getSurveyID_fkSQA() {
-        return surveyID_fkSQA;
+    public void setMsurveyId(int msurveyId) {
+        this.msurveyId = msurveyId;
     }
 
-    public void setSurveyID_fkSQA(int surveyID_fkSQA) {
-        this.surveyID_fkSQA = surveyID_fkSQA;
+    public int getMquestionId() {
+        return mquestionId;
     }
 
-    public int getQuestionID_fkSQA() { return questionID_fkSQA; }
-
-    public void setQuestionID_fkSQA(int questionID_fkSQA) {
-        this.questionID_fkSQA = questionID_fkSQA;
+    public void setMquestionId(int mquestionId) {
+        this.mquestionId = mquestionId;
     }
 
-    public int getSurveyQA_ID() {
-        return surveyQA_ID;
+    public int getMofferedAnsId() {
+        return mofferedAnsId;
     }
 
-    public void setSurveyQA_ID(int surveyQA_ID) {
-        this.surveyQA_ID = surveyQA_ID;
+    public void setMofferedAnsId(int mofferedAnsId) {
+        this.mofferedAnsId = mofferedAnsId;
     }
 
     public String getMofferedAnsText() { return mofferedAnsText; }
+
 
     public void setMofferedAnsText(String mofferedAnsText) { this.mofferedAnsText = mofferedAnsText; }
 
