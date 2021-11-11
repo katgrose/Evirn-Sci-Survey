@@ -1,59 +1,54 @@
 package com.example.evirn_sci_survey;
+/*
+    Title: Answer.java
+    Abstract: This class holds an entity(table) for answers with anonNum field being the member to keep track of question order in place of a personId.
+              This table has relationships with SurveyQuestionAnswer and SurveyQuestion classes.
+              It's function is: Every survey question has an answer either 1) the offered one OR another text that the user types in.
 
+    Date: 11/10/2021
+    Author:EnvironSciTeam2K21
+ */
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "answer",
-        primaryKeys = {"anonNum", "surveyID", "questionID"})
-//        foreignKeys = {
+        //Index to not trigger full data scan of parent table upon changes.
+        indices = {@Index(value = {"surveyId", "questionId"})},
+        primaryKeys = {"anonNum", "surveyId", "questionId"},
+        foreignKeys = {
 //                //Has a relationship with SurveyQuestionAnswer --> Every survey question has an answer either 1) the offered one OR
-//                @ForeignKey(
-//                        entity = SurveyQuestionAnswer.class,
-//                        parentColumns = {"surveyID_fkSQA", "questionID_fkSQA"},
-//                        childColumns = {"surveyID_fkA", "questionID_fkA"}
-//                ),
-//                @ForeignKey(
-//                        entity = SurveyQuestion.class,
-//                        parentColumns = {"surveyID", "questionID"},
-//                        childColumns = {"surveyID_fkAS", "questionID_fkAS"}
-//                )
-//        })
+                @ForeignKey(
+                        entity = SurveyQuestionAnswer.class,
+                        parentColumns = {"surveyId", "questionId"},
+                        childColumns = {"surveyId", "questionId"}
+                ),
+                @ForeignKey(
+                        entity = SurveyQuestion.class,
+                        parentColumns = {"surveyId", "questionId"},
+                        childColumns = {"surveyId", "questionId"}
+                )
+        })
 public class Answer {
     //anonNum is what you use to keep track of question nums
     @ColumnInfo(name = "anonNum")
     private int manonNum;
 
-    @ColumnInfo(name = "surveyID")
-    private int msurveyID;
+    @ColumnInfo(name = "surveyId")
+    private int msurveyId;
 
-    @ColumnInfo(name = "questionID")
-    private int mquestionID;
+    @ColumnInfo(name = "questionId")
+    private int mquestionId;
 
-    @ColumnInfo(name = "surveyID_fkA")
-    private int msurveyID_fkA;
-
-    @ColumnInfo(name = "questionID_fkA")
-    private int mquestionID_fkA;
-
-    @ColumnInfo(name = "surveyID_fkAS")
-    private int msurveyID_fkAS;
-
-    @ColumnInfo(name = "questionID_fkAS")
-    private int mquestionID_fkAS;
-                                            // 2) another text that the user types in
-    @ColumnInfo(name = "anotherAnsText")
+    @ColumnInfo(name = "anotherAnsText")// 2) another text that the user types in
     private String manotherAnsText;
 
-    public Answer(int manonNum, int msurveyID, int mquestionID, int mquestionID_fkA, int mquestionID_fkAS, int msurveyID_fkA, int msurveyID_fkAS, String manotherAnsText){
+    public Answer(int manonNum, int msurveyId, int mquestionId, String manotherAnsText){
         this.manonNum = manonNum;
-        this.msurveyID = msurveyID;
-        this.mquestionID = mquestionID;
-        this.mquestionID_fkA = mquestionID_fkA;
-        this.msurveyID_fkA = msurveyID_fkA;
-        this.msurveyID_fkAS = msurveyID_fkAS;
-        this.mquestionID_fkAS = mquestionID_fkAS;
+        this.msurveyId = msurveyId;
+        this.mquestionId = mquestionId;
         this.manotherAnsText = manotherAnsText;
     }
 
@@ -65,61 +60,28 @@ public class Answer {
         this.manonNum = manonNum;
     }
 
-    public int getMsurveyID() {
-        return msurveyID;
+    public int getMsurveyId() {
+        return msurveyId;
     }
 
-    public void setMsurveyID(int msurveyID) {
-        this.msurveyID = msurveyID;
+    public void setMsurveyId(int msurveyId) {
+        this.msurveyId = msurveyId;
     }
 
-    public int getMquestionID() {
-        return mquestionID;
+    public int getMquestionId() {
+        return mquestionId;
     }
 
-    public void setMquestionID(int mquestionID) {
-        this.mquestionID = mquestionID;
-    }
-
-    public int getMsurveyID_fkA() {
-        return msurveyID_fkA;
-    }
-
-    public void setMsurveyID_fkA(int msurveyID_fkA) {
-        this.msurveyID_fkA = msurveyID_fkA;
-    }
-
-    public void setMquestionID_fkA(int mquestionID_fkA) {
-        this.mquestionID_fkA = mquestionID_fkA;
-    }
-
-    public int getMquestionID_fkA() {
-        return mquestionID_fkA;
-    }
-
-    public int getMquestionID_fkAS() {
-        return mquestionID_fkAS;
-    }
-
-    public void setMquestionID_fkAS(int mquestionID_fkAS) {
-        this.mquestionID_fkAS = mquestionID_fkAS;
-    }
-
-    public void setMsurveyID_fkAS(int msurveyID_fkAS) {
-        this.msurveyID_fkAS = msurveyID_fkAS;
-    }
-
-    public int getMsurveyID_fkAS() {
-        return msurveyID_fkAS;
-    }
-
-    public void setManotherAnsText(String manotherAnsText) {
-        this.manotherAnsText = manotherAnsText;
+    public void setMquestionId(int mquestionId) {
+        this.mquestionId = mquestionId;
     }
 
     public String getManotherAnsText() {
         return manotherAnsText;
     }
 
+    public void setManotherAnsText(String manotherAnsText) {
+        this.manotherAnsText = manotherAnsText;
+    }
 
 }
