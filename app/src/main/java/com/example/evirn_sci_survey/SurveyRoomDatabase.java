@@ -6,9 +6,13 @@ package com.example.evirn_sci_survey;
     Author:EnvironSciTeam2K21
  */
 import android.content.Context;
+
+import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.sqlite.db.SupportSQLiteDatabase;
+
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -30,10 +34,37 @@ public abstract class SurveyRoomDatabase extends RoomDatabase {
                 if(INSTANCE == null){
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                             SurveyRoomDatabase.class, "survey_database")
+                            .addCallback(sRoomDatabaseCallback)
                             .build();
                 }
             }
         }
         return INSTANCE;
     }
+
+
+    /**
+     * Override the onCreate method to populate the database.
+     * For this sample, we clear the database every time it is created.
+     * it is a test
+     */
+    private static RoomDatabase.Callback sRoomDatabaseCallback = new RoomDatabase.Callback() {
+        @Override
+        public void onCreate(@NonNull SupportSQLiteDatabase db) {
+            super.onCreate(db);
+            // If you want to keep data through app restarts,
+            // comment out the following block
+            databaseWriteExecutor.execute(() -> {
+                // Populate the database in the background.
+                // If you want to start with more surveys, just add them.
+            SurveyDao dao = INSTANCE.surveyDao();
+            dao.deleteAll();
+
+            Survey survey = new Survey(1, "EnvironSciSurveyTest1", "11/21", "12/21");
+            dao.insert(survey);
+            survey = new Survey(2, "EnvironSciSurveyTest2", "11/3", "12/21");
+            dao.insert(survey);
+            });
+        }
+    };
 }
