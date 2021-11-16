@@ -77,7 +77,6 @@ public class SurveyQuestionAnswer {
 
     public String getMofferedAnsText() { return mofferedAnsText; }
 
-
     public void setMofferedAnsText(String mofferedAnsText) { this.mofferedAnsText = mofferedAnsText; }
 
 }
