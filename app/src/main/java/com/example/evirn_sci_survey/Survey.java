@@ -5,12 +5,21 @@ package com.example.evirn_sci_survey;
     Date: 11/10/2021
     Author:EnvironSciTeam2K21
  */
+
+import android.app.Application;
+import android.content.Context;
+import android.content.Intent;
+
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import com.example.evirn_sci_survey.database.SurveyDao;
+import com.example.evirn_sci_survey.database.SurveyRepository;
+import com.example.evirn_sci_survey.database.SurveyRoomDatabase;
+
 @Entity(tableName = "survey")
-public class Survey {
+public class Survey implements EditListItem {
     //Generates a primary key automatically
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "surveyId")
@@ -64,4 +73,18 @@ public class Survey {
         this.mendDate = mendDate;
     }
 
+    @Override
+    public String getListItemText() {
+        return getMstartDate() + "-" + getMendDate() + ": " + getMdescription();
+    }
+
+    @Override
+    public Intent getListItemEditIntent(Context context) {
+        return new Intent(); //TODO: Replace with edit intent
+    }
+
+    @Override
+    public void DeleteSelf(Context context) {
+        // Delete here
+    }
 }

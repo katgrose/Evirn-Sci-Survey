@@ -12,6 +12,27 @@
         <activity
             android:name=".NewSurveyActivity"
             android:exported="false" />
+        android:theme="@style/Theme.EvirnSciSurvey">
+
+        <!--
+               Set to true if your app is Standalone, that is, it does not require the handheld
+               app to run.
+        -->
+        <meta-data
+            android:name="com.google.android.standalone"
+            android:value="true" />
+
+        <activity
+            android:name=".editor.EditQuestion"
+            android:label="@string/title_activity_edit_question">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".editor.EditQuestions" />
+        <activity android:name=".QuestionDisplay" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
