@@ -3,7 +3,6 @@ package edu.csumb.bamagana.scienceworkshopsurvey;
 import androidx.appcompat.app.AppCompatActivity;
 
 
-import android.graphics.Color;
 import android.os.Bundle;
 /*import android.database;
 import android.database.sqlite;*/
@@ -21,33 +20,27 @@ import java.util.ArrayList;
 
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity implements OnClickListener {
 
-    //private MainBTN btd;
+import android.os.Bundle;
 
-    private Button nextButton;
+public class Page_02 extends AppCompatActivity {
+
+     private Button page02_btn;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_page_02);
 
-        //nextButton.setBackgroundColor(Color.YELLOW);
-
-        nextButton = (Button) findViewById(R.id.main_button_next);
-        nextButton.setOnClickListener(new View.OnClickListener() {
+        page02_btn = (Button) findViewById(R.id.second_page_button_next);
+        page02_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(MainActivity.this, Page_02.class);
-                startActivity(intent);
+                Intent p2I = new Intent(Page_02.this, Transportation_page.class);
+                startActivity(p2I);
             }
         });
-
-    }
-
-    @Override
-    public void onClick(View v) {
 
     }
 }

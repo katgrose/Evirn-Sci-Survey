@@ -6,24 +6,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#889FE3"
-    android:gravity="center">
-
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="272dp"
-        android:layout_height="240dp"
-        android:layout_margin="20dp"
-        android:layout_marginStart="20dp"
-        android:contentDescription="@string/todo"
-        app:srcCompat="@drawable/science_workshop_logo" />
+    android:gravity="center"
+    >
 
     <EditText
         android:id="@+id/User_Name"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:hint="@string/enter_first_name"
+        android:hint="@string/often"
         android:importantForAutofill="no"
         android:inputType="text"
         android:padding="20dp"
@@ -37,7 +28,7 @@
         android:layout_width="304dp"
         android:layout_height="80dp"
         android:layout_margin="20dp"
-        android:hint="@string/enter_project_name"
+        android:hint="@string/students_current_grade"
         android:importantForAutofill="no"
         android:inputType="text"
         android:padding="20dp"
@@ -47,13 +38,15 @@
         tools:layout_editor_absoluteY="116dp" />
 
     <Button
-        android:id="@+id/main_button_next"
+        android:id="@+id/second_page_button_next"
         android:layout_width="309dp"
         android:layout_height="wrap_content"
+        android:background="#DADA34"
+        android:backgroundTint="#FFEB3B"
         android:text="@string/string_main_page_button"
         android:textAlignment="center"
-        android:background="#DADA34"
-        android:textColor="#FFFFFF" />
-
+        android:textColor="#FFFFFF"
+        android:visibility="visible"
+        app:iconTint="#FFC107" />
 
 </LinearLayout>
