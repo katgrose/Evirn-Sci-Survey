@@ -3,13 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/layout/activity_admin.xml" value="0.23324275362318841" />
+        <entry key="app/src/main/res/layout/activity_camera__interaction.xml" value="0.23324275362318841" />
         <entry key="app/src/main/res/layout/activity_edit_answer.xml" value="0.16770833333333332" />
         <entry key="app/src/main/res/layout/activity_edit_question.xml" value="0.3005027040029921" />
         <entry key="app/src/main/res/layout/activity_edit_questions.xml" value="0.24320652173913043" />
         <entry key="app/src/main/res/layout/activity_edit_survey.xml" value="0.2654400195208261" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.17074275362318841" />
+        <entry key="app/src/main/res/layout/activity_enjoyment_level.xml" value="0.23324275362318841" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.16770833333333332" />
         <entry key="app/src/main/res/layout/activity_new_survey.xml" value="0.21422101449275363" />
+        <entry key="app/src/main/res/layout/activity_page_02.xml" value="0.23324275362318841" />
+        <entry key="app/src/main/res/layout/activity_question_display.xml" value="0.2296195652173913" />
         <entry key="app/src/main/res/layout/activity_survey_list.xml" value="0.16770833333333332" />
+        <entry key="app/src/main/res/layout/activity_tools_page.xml" value="0.23324275362318841" />
+        <entry key="app/src/main/res/layout/activity_transportation_page.xml" value="0.23324275362318841" />
+        <entry key="app/src/main/res/layout/list_answer_layout.xml" value="0.2243956003839661" />
         <entry key="app/src/main/res/layout/list_question_layout.xml" value="0.16770833333333332" />
         <entry key="app/src/main/res/layout/recyclerview_item.xml" value="0.17074275362318841" />
         <entry key="app/src/main/res/layout/recylerview_item.xml" value="0.1" />

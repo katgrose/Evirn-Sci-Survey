@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ListView;
 
-import com.example.evirn_sci_survey.MainActivity;
+import com.example.evirn_sci_survey.AdminActivity;
 import com.example.evirn_sci_survey.R;
 import com.example.evirn_sci_survey.database.SurveyQuestion;
 import com.example.evirn_sci_survey.database.SurveyQuestionDao;
@@ -43,7 +43,7 @@ public class EditQuestions extends AppCompatActivity implements EditList {
         refreshDisplay();
 
         mDoneBtn.setOnClickListener(v -> {
-            Intent intent = MainActivity.getIntent(EditQuestions.this);
+            Intent intent = AdminActivity.getIntent(EditQuestions.this);
             startActivity(intent);
         });
 

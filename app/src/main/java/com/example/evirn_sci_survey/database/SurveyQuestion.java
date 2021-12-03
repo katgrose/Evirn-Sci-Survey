@@ -99,6 +99,11 @@ public class SurveyQuestion implements EditListItem {
     @Override
     public void DeleteSelf(Context context) {
         SurveyQuestionDao questionDAO = SurveyRoomDatabase.getDatabase(context.getApplicationContext()).surveyQuestionDao();
+        SurveyQuestionAnswerDao questionAnswerDAO = SurveyRoomDatabase.getDatabase(context.getApplicationContext()).surveyQuestionAnswerDao();
+        List<SurveyQuestionAnswer> answers = questionAnswerDAO.getAnswersInQuestion(getMsurveyId(), getQuestionId());
+        for(int i = 0; i < answers.size(); i++) {
+            answers.get(i).DeleteSelf(context);
+        }
         questionDAO.Delete(this);
         // Update order for all other questions
         List<SurveyQuestion> questionList = questionDAO.getQuestionsInSurvey(msurveyId);

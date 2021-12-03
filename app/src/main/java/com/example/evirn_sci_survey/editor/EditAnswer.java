@@ -6,10 +6,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.evirn_sci_survey.MainActivity;
+import com.example.evirn_sci_survey.AdminActivity;
 import com.example.evirn_sci_survey.R;
 import com.example.evirn_sci_survey.database.SurveyQuestionAnswer;
 import com.example.evirn_sci_survey.database.SurveyQuestionAnswerDao;
@@ -21,6 +22,7 @@ public class EditAnswer extends AppCompatActivity {
     private SurveyQuestionAnswerDao questionAnswerDAO;
 
     private TextView mAnswerText;
+    private CheckBox mIsCheckbox;
 
     private SurveyQuestionAnswer answer;
 
@@ -32,16 +34,19 @@ public class EditAnswer extends AppCompatActivity {
         int answerId = getIntent().getIntExtra(EXTRA_ANSWER_ID, -1);
         answer = questionAnswerDAO.getAnswerFromId(answerId);
 
-        if(answer == null) { startActivity(MainActivity.getIntent(EditAnswer.this)); }
+        if(answer == null) { startActivity(AdminActivity.getIntent(EditAnswer.this)); }
         else {
             mAnswerText = findViewById(R.id.answer_text);
             Button mSaveChangesButton = findViewById(R.id.saveBtn);
             Button mCancelButton = findViewById(R.id.cancelBtn);
+            mIsCheckbox = findViewById(R.id.checkbox);
 
             mAnswerText.setText(answer.getMofferedAnsText());
+            mIsCheckbox.setChecked(answer.isCheckbox());
 
             mSaveChangesButton.setOnClickListener(v -> {
                 answer.setMofferedAnsText(mAnswerText.getText().toString());
+                answer.setCheckbox(mIsCheckbox.isChecked());
                 questionAnswerDAO.update(answer);
                 Toast.makeText(EditAnswer.this,"Answer updated successfully", Toast.LENGTH_SHORT).show();
                 returnToEditQuestion();

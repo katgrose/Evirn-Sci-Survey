@@ -54,4 +54,19 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.879" />
 
+    <CheckBox
+        android:id="@+id/checkbox"
+        android:layout_width="304dp"
+        android:layout_height="80dp"
+        android:layout_alignParentTop="true"
+        android:layout_margin="50dp"
+        android:text="@string/is_checkbox"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/saveBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.242"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/answer_text"
+        app:layout_constraintVertical_bias="0.0" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -37,6 +37,12 @@
         </activity>
         <activity android:name=".editor.EditQuestions" />
         <activity android:name=".QuestionDisplay" />
+        <activity android:name=".Camera_Interaction"/>
+        <activity android:name=".Enjoyment_level" />
+        <activity android:name=".Tools_page" />
+        <activity android:name=".Transportation_page" />
+        <activity android:name=".Page_02" />
+        <activity android:name=".AdminActivity"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

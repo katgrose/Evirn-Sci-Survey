@@ -10,7 +10,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.evirn_sci_survey.MainActivity;
+import com.example.evirn_sci_survey.AdminActivity;
 import com.example.evirn_sci_survey.R;
 import com.example.evirn_sci_survey.database.SurveyQuestion;
 import com.example.evirn_sci_survey.database.SurveyQuestionAnswer;
@@ -42,7 +42,7 @@ public class EditQuestion extends AppCompatActivity implements EditList {
         int questionId = getIntent().getIntExtra(QUESTION_ID, -1);
         question = questionDAO.getQuestionFromId(questionId);
 
-        if(question == null) { startActivity(MainActivity.getIntent(EditQuestion.this)); }
+        if(question == null) { startActivity(AdminActivity.getIntent(EditQuestion.this)); }
         else {
             surveyId = question.getMsurveyId();
 

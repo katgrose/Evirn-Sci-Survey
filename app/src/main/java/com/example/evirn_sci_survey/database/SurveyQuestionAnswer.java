@@ -28,8 +28,7 @@ import java.util.List;
                 entity = SurveyQuestion.class,
                 parentColumns = {"questionId"},
                 childColumns = {"questionId"}
-
-       )
+        )
 })
 public class SurveyQuestionAnswer implements EditListItem {
 /*
@@ -52,6 +51,16 @@ public class SurveyQuestionAnswer implements EditListItem {
 
     @ColumnInfo(name = "offeredAnsText")
     private String mofferedAnsText;
+
+    public void setCheckbox(boolean checkbox) {
+        this.checkbox = checkbox;
+    }
+
+    public boolean isCheckbox() {
+        return checkbox;
+    }
+
+    private boolean checkbox;
 
     public SurveyQuestionAnswer(int msurveyId, int mquestionId, int mansOrder, String mofferedAnsText ){
         this.msurveyId = msurveyId;

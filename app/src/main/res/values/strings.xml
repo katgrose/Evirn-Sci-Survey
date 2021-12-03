@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Evirn-Sci-Survey</string>
+    <string name="app_name">Science Workshop Survey</string>
     <string name="action_settings">Settings</string>
     <string name="hint_word">Word…</string>
     <string name="button_save">Save</string>
@@ -17,6 +17,26 @@
     <string name="title_activity_edit_question">EditQuestion</string>
     <string name="saved_prefs_location">com.example.evirn_sci_survey.SharedPref</string>
     <string name="saved_active_survey_key">com.example.evirn_sci_survey.SharedPref.ActiveSurvey</string>
+    <string name="saved_logged_in_key">com.example.evirn_sci_survey.SharedPref.LoggedInKey</string>
+    <string name="enter_project_name">Enter Project Name</string>
+    <string name="enter_first_name">Enter First Name</string>
+    <string name="Main_Page_Button" />
+    <string name="string_main_page_button"> Next </string>
+    <string name="todo">TODO</string>
+    <string name="often">How often do you come?</string>
+    <string name="students_current_grade">What grade are you in?</string>
+    <string name="transportation">How did you arrive to the workshop?</string>
+    <string name="tool_page_editT">What tools did you use?</string>
+    <string name="togglebutton">ToggleButton</string>
+    <string name="Scssors">Scissors</string>
+    <string name="Tape">Tape</string>
+    <string name="Pen">Pen </string>
+    <string name="Screw_Driver">Screw Driver</string>
+    <string name="com.example.evirn_sci_survey.Enjoyment_level">On a scale from 0 to 5
+        <br />how much  did you enjoy the project</string>
+    <string name="Zero">0</string>
+    <string name="status">Bad : 0</string>
+    <string name="cam_finish">Take Picture</string>
     <!--
     This string is used for square devices and overridden by hello_world in
     values-round/strings.xml for round devices.
@@ -35,4 +55,7 @@
     <string name="is_active">Is Active</string>
     <string name="answers">Answers</string>
     <string name="add_answer">Add Answer</string>
+    <string name="view_results">View Results</string>
+    <string name="logout">Logout</string>
+    <string name="is_checkbox">Is Checkbox</string>
 </resources>
