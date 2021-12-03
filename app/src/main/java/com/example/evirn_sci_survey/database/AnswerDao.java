@@ -1,4 +1,4 @@
-package com.example.evirn_sci_survey;
+package com.example.evirn_sci_survey.database;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
@@ -19,8 +19,5 @@ public interface AnswerDao {
 
     @Query("DELETE FROM answer")
     void deleteAll();
-
-    @Query("SELECT * FROM answer ORDER BY anonNum")
-    LiveData<List<Answer>> getAnswerByNum();
 
 }

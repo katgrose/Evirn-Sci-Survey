@@ -1,4 +1,4 @@
-package com.example.evirn_sci_survey;
+package com.example.evirn_sci_survey.editor;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -11,7 +11,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
-import com.example.evirn_sci_survey.editor.EditQuestions;
+
+import com.example.evirn_sci_survey.R;
+import com.example.evirn_sci_survey.editor.EditList;
+import com.example.evirn_sci_survey.editor.EditListItem;
 
 import java.util.ArrayList;
 
@@ -20,8 +23,6 @@ public class ListAdapter extends ArrayAdapter<EditListItem> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
-        // TODO: Switch view to edit_list_layout
         View currentView = convertView;
 
         if (currentView == null) {
@@ -47,15 +48,14 @@ public class ListAdapter extends ArrayAdapter<EditListItem> {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                builder.setTitle("Are you sure you want to delete the " + currentListItem.getClass() + "?");
+                builder.setTitle("Are you sure you want to delete the " + currentListItem.getClass().getSimpleName() + "?");
 
                 builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         currentListItem.DeleteSelf(getContext());
-                        Toast.makeText(getContext(), currentListItem.getClass() + " successfully removed", Toast.LENGTH_SHORT).show();
-                        ((EditQuestions)getContext()).refreshDisplay();
-                        // TODO: update to use EditList class
+                        Toast.makeText(getContext(),  currentListItem.getClass().getSimpleName() + " successfully removed", Toast.LENGTH_SHORT).show();
+                        ((EditList)getContext()).refreshDisplay();
                     }
                 });
 

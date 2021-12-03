@@ -1,10 +1,13 @@
-package com.example.evirn_sci_survey;
+package com.example.evirn_sci_survey.editor;
 
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
+
+import com.example.evirn_sci_survey.database.Survey;
+import com.example.evirn_sci_survey.editor.SurveyViewHolder;
 
 public class SurveyListAdaptor extends ListAdapter<Survey, SurveyViewHolder> {
 
@@ -20,8 +23,9 @@ public class SurveyListAdaptor extends ListAdapter<Survey, SurveyViewHolder> {
     @Override
     public void onBindViewHolder(SurveyViewHolder holder, int position) {
         Survey current = getItem(position);
-        holder.bind(current.getMdescription());
+        holder.bind(current.getMdescription(), current);
     }
+
     static class SurveyDiff extends DiffUtil.ItemCallback<Survey> {
 
         @Override
@@ -34,5 +38,7 @@ public class SurveyListAdaptor extends ListAdapter<Survey, SurveyViewHolder> {
             return oldItem.getMdescription().equals(newItem.getMdescription());
         }
     }
+
+
 
 }

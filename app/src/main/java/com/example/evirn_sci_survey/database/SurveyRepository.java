@@ -4,10 +4,6 @@ import android.app.Application;
 
 import androidx.lifecycle.LiveData;
 
-import com.example.evirn_sci_survey.Survey;
-import com.example.evirn_sci_survey.database.SurveyDao;
-import com.example.evirn_sci_survey.database.SurveyRoomDatabase;
-
 import java.util.List;
 
 public class SurveyRepository {
@@ -40,6 +36,12 @@ public class SurveyRepository {
     public void delete(Survey survey) {
         SurveyRoomDatabase.databaseWriteExecutor.execute(() -> {
             mSurveyDao.delete(survey);
+        });
+    }
+
+    public void update(Survey survey) {
+        SurveyRoomDatabase.databaseWriteExecutor.execute(() -> {
+            mSurveyDao.update(survey);
         });
     }
 

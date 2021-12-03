@@ -6,13 +6,11 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.evirn_sci_survey.Question;
-
 import java.util.List;
 
 @Dao
 public interface QuestionDAO {
-    @Insert
+    /**@Insert
     void Insert(Question... questions);
 
     @Update
@@ -31,5 +29,5 @@ public interface QuestionDAO {
     Question getQuestionFromId(int questionId);
 
     @Query("SELECT COUNT(questionId) FROM " + AppDatabase.QUESTION_TABLE)
-    Integer getRowCount();
+    Integer getRowCount();*/
 }

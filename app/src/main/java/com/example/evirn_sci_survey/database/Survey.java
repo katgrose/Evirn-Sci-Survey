@@ -1,4 +1,4 @@
-package com.example.evirn_sci_survey;
+package com.example.evirn_sci_survey.database;
 /*
     Title: Survey.java
     Abstract: This is an entity(table) that houses all surveys including its Id, description, startDate, and endDate.
@@ -6,17 +6,15 @@ package com.example.evirn_sci_survey;
     Author:EnvironSciTeam2K21
  */
 
-import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
-import com.example.evirn_sci_survey.database.SurveyDao;
-import com.example.evirn_sci_survey.database.SurveyRepository;
-import com.example.evirn_sci_survey.database.SurveyRoomDatabase;
+import com.example.evirn_sci_survey.editor.EditListItem;
 
 @Entity(tableName = "survey")
 public class Survey implements EditListItem {
@@ -33,6 +31,12 @@ public class Survey implements EditListItem {
 
     @ColumnInfo(name = "endDate")
     private String mendDate;
+
+    @Ignore
+    public Survey(String mdescription){
+        this.mdescription = mdescription;
+    }
+
     //
     public Survey(int msurveyId, String mdescription, String mstartDate, String mendDate){
         this.msurveyId = msurveyId;

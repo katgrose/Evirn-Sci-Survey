@@ -1,25 +1,22 @@
 package com.example.evirn_sci_survey;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Room;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.evirn_sci_survey.database.AppDatabase;
 import com.example.evirn_sci_survey.database.QuestionDAO;
+import com.example.evirn_sci_survey.database.SurveyQuestion;
+import com.example.evirn_sci_survey.database.SurveyQuestionDao;
+import com.example.evirn_sci_survey.database.SurveyRoomDatabase;
 
 public class QuestionDisplay extends AppCompatActivity {
-    public static final String QUESTION_ID = "evirn_sci_survey.QuestionID";
+    public static final String EXTRA_QUESTION_ORDER = "evirn_sci_survey.EXTRA_QUESTION_ORDER";
+    public static final String EXTRA_SURVEY_ID = "evirn_sci_survey.EXTRA_SURVEY_ID";
     QuestionDAO questionDAO;
 
     TextView questionLbl;
@@ -30,9 +27,10 @@ public class QuestionDisplay extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question_display);
 
-        int questionOrder = getIntent().getIntExtra(getString(R.string.saved_question_order), -1);
-        questionDAO = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DB_NAME).allowMainThreadQueries().build().getQuestionDAO();
-        Question question = questionDAO.getQuestionFromOrder(questionOrder);
+        int questionOrder = getIntent().getIntExtra(EXTRA_QUESTION_ORDER, -1);
+        int surveyId = getIntent().getIntExtra(EXTRA_SURVEY_ID, -1);
+        SurveyQuestionDao questionDAO = SurveyRoomDatabase.getDatabase(getApplication()).surveyQuestionDao();
+        SurveyQuestion question = questionDAO.getQuestionFromOrder(surveyId, questionOrder);
 
         if(question == null) {
             returnToMain();
@@ -44,8 +42,7 @@ public class QuestionDisplay extends AppCompatActivity {
             nextBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = getIntent(QuestionDisplay.this);
-                    intent.putExtra(getString(R.string.saved_question_order), questionOrder+1);
+                    Intent intent = getIntent(QuestionDisplay.this, questionOrder+1, surveyId);
                     startActivity(intent);
                 }
             });
@@ -57,7 +54,10 @@ public class QuestionDisplay extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public static Intent getIntent(Context packageContext) {
-        return new Intent(packageContext, QuestionDisplay.class);
+    public static Intent getIntent(Context packageContext, int questionOrder, int surveyId) {
+        Intent intent = new Intent(packageContext, QuestionDisplay.class);
+        intent.putExtra(EXTRA_QUESTION_ORDER, questionOrder);
+        intent.putExtra(EXTRA_SURVEY_ID, surveyId);
+        return intent;
     }
 }

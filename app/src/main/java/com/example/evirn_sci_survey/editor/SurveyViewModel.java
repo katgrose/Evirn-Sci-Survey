@@ -1,10 +1,11 @@
-package com.example.evirn_sci_survey;
+package com.example.evirn_sci_survey.editor;
 
 import android.app.Application;
 
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
+import com.example.evirn_sci_survey.database.Survey;
 import com.example.evirn_sci_survey.database.SurveyRepository;
 
 import java.util.List;
@@ -22,4 +23,6 @@ public class SurveyViewModel extends AndroidViewModel {
     LiveData<List<Survey>> getAllSurveys (){return mAllSurveys;}
 
     public void insert(Survey survey){mRepository.insert(survey);}
+
+    public void update(Survey survey){mRepository.update(survey);}
 }

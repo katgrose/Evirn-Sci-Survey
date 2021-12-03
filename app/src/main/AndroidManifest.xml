@@ -10,10 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".NewSurveyActivity"
+            android:name=".editor.EditAnswer"
             android:exported="false" />
-        android:theme="@style/Theme.EvirnSciSurvey">
-
+        <activity
+            android:name=".editor.EditSurvey"
+            android:exported="false" />
+        <activity
+            android:name=".editor.SurveyListActivity"
+            android:exported="false" />
         <!--
                Set to true if your app is Standalone, that is, it does not require the handheld
                app to run.

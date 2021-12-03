@@ -1,4 +1,4 @@
-package com.example.evirn_sci_survey;
+package com.example.evirn_sci_survey.editor;
 
 import android.content.Context;
 import android.content.Intent;

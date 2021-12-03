@@ -1,35 +1,56 @@
-package com.example.evirn_sci_survey;
-
+package com.example.evirn_sci_survey.database;
+/*
+    Title: SurveyQuestion.java
+    Abstract: This is an entity(table) that houses the questionId
+    Date: 11/10/2021
+    Author:EnvironSciTeam2K21
+ */
 import android.content.Context;
 import android.content.Intent;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.Ignore;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
-import androidx.room.Room;
 
-import com.example.evirn_sci_survey.database.AppDatabase;
-import com.example.evirn_sci_survey.database.QuestionDAO;
+import com.example.evirn_sci_survey.editor.EditListItem;
 import com.example.evirn_sci_survey.editor.EditQuestion;
 
 import java.util.List;
 
-@Entity(tableName = AppDatabase.QUESTION_TABLE)
-public class Question implements EditListItem {
+@Entity(tableName = "surveyquestion",
+        //Index to not trigger full data scan of parent table upon changes.
+        indices = {@Index(value = "surveyId")},
+
+        foreignKeys = {
+        @ForeignKey(entity = Survey.class,
+        parentColumns = "surveyId",
+        childColumns = "surveyId"
+        )
+})
+
+public class SurveyQuestion implements EditListItem {
     @PrimaryKey(autoGenerate = true)
     private int questionId;
 
-    private int questionOrder;
-    private String questionText;
+    @ColumnInfo(name = "surveyId")
+    private int msurveyId;
 
-    public Question(int questionOrder) {
+    private String questionText;
+    private int questionOrder;
+
+    public SurveyQuestion(int msurveyId, int questionOrder) {
         this.questionText = "";
+        this.msurveyId = msurveyId;
         this.questionOrder = questionOrder;
     }
 
     @Ignore
-    public Question(String questionText, int order) {
+    public SurveyQuestion(int msurveyId, String questionText, int order) {
         this.questionText = questionText;
+        this.msurveyId = msurveyId;
         this.questionOrder = order;
     }
 
@@ -39,6 +60,14 @@ public class Question implements EditListItem {
 
     public void setQuestionId(int questionId) {
         this.questionId = questionId;
+    }
+
+    public int getMsurveyId() {
+        return msurveyId;
+    }
+
+    public void setMsurveyId(int msurveyId) {
+        this.msurveyId = msurveyId;
     }
 
     public String getQuestionText() {
@@ -69,10 +98,10 @@ public class Question implements EditListItem {
 
     @Override
     public void DeleteSelf(Context context) {
-        QuestionDAO questionDAO = Room.databaseBuilder(context, AppDatabase.class, AppDatabase.DB_NAME).allowMainThreadQueries().build().getQuestionDAO();
+        SurveyQuestionDao questionDAO = SurveyRoomDatabase.getDatabase(context.getApplicationContext()).surveyQuestionDao();
         questionDAO.Delete(this);
         // Update order for all other questions
-        List<Question> questionList = questionDAO.getQuestions();
+        List<SurveyQuestion> questionList = questionDAO.getQuestionsInSurvey(msurveyId);
         for(int i = 0; i < questionList.size(); i++) {
             questionList.get(i).setQuestionOrder(i + 1);
             questionDAO.Update(questionList.get(i));
