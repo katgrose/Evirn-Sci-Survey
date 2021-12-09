@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="edu.csumb.bamagana.scienceworkshopsurvey"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="21"
+        android:targetSdkVersion="29" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <application
+        android:allowBackup="true"
+        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.ScienceWorkshopSurvey" >
+        <activity android:name="edu.csumb.bamagana.scienceworkshopsurvey.Camera_Interaction" />
+        <activity android:name="edu.csumb.bamagana.scienceworkshopsurvey.Enjoyment_level" />
+        <activity android:name="edu.csumb.bamagana.scienceworkshopsurvey.Tools_page" />
+        <activity android:name="edu.csumb.bamagana.scienceworkshopsurvey.Transportation_page" />
+        <activity android:name="edu.csumb.bamagana.scienceworkshopsurvey.Page_02" />
+        <activity android:name="edu.csumb.bamagana.scienceworkshopsurvey.MainActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
