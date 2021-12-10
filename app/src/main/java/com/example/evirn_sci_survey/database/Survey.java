@@ -33,11 +33,10 @@ public class Survey implements EditListItem {
     private String mendDate;
 
     @Ignore
-    public Survey(String mdescription){
+    public Survey(String mdescription) {
         this.mdescription = mdescription;
     }
 
-    //
     public Survey(int msurveyId, String mdescription, String mstartDate, String mendDate){
         this.msurveyId = msurveyId;
         this.mdescription = mdescription;
@@ -77,6 +76,25 @@ public class Survey implements EditListItem {
         this.mendDate = mendDate;
     }
 
+    public void generateBasicQuestions(SurveyQuestionDao questionDAO, SurveyQuestionAnswerDao questionAnswerDAO) {
+        // For creating placeholder database questions for questions that are built in manually.
+        // This is so that done so that we have a questionId to create answers for.
+        // Kind of a hacky workaround...
+        SurveyQuestion q1 = new SurveyQuestion(msurveyId, "First Name and Project Name", -1);
+        SurveyQuestion q2 = new SurveyQuestion(msurveyId, "Project Rating", -2);
+        SurveyQuestion q3 = new SurveyQuestion(msurveyId, "Picture", -3);
+        questionDAO.Insert(q1, q2, q3);
+        q1 = questionDAO.getQuestionFromOrder(msurveyId, -1);
+        q2 = questionDAO.getQuestionFromOrder(msurveyId, -2);
+        q3 = questionDAO.getQuestionFromOrder(msurveyId, -3);
+        SurveyQuestionAnswer answer1 = new SurveyQuestionAnswer(msurveyId, q1.getQuestionId(), 0, "Enter First Name");
+        SurveyQuestionAnswer answer2 = new SurveyQuestionAnswer(msurveyId, q1.getQuestionId(), 1, "Enter Project Name");
+        SurveyQuestionAnswer answer3 = new SurveyQuestionAnswer(msurveyId, q2.getQuestionId(), 0, "Project Rating");
+        SurveyQuestionAnswer answer4 = new SurveyQuestionAnswer(msurveyId, q3.getQuestionId(), 0, "Picture");
+        answer3.setQuestionType("Slider");
+        questionAnswerDAO.Insert(answer1, answer2, answer3, answer4);
+    }
+
     @Override
     public String getListItemText() {
         return getMstartDate() + "-" + getMendDate() + ": " + getMdescription();
@@ -84,7 +102,7 @@ public class Survey implements EditListItem {
 
     @Override
     public Intent getListItemEditIntent(Context context) {
-        return new Intent(); //TODO: Replace with edit intent
+        return new Intent(); // Unused
     }
 
     @Override

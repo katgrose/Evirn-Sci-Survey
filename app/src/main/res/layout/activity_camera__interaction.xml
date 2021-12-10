@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,27 +10,55 @@
     android:padding="10dp"
     tools:context=".Camera_Interaction">
 
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/top_guideline"
+        app:layout_constraintGuide_percent="0"
+        android:orientation="horizontal"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bottom_guideline"
+        app:layout_constraintGuide_percent=".7"
+        android:orientation="horizontal"/>
+
     <ImageView
         android:id="@+id/image_view"
-        android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:layout_weight="1" />
+        android:layout_width="235dp"
+        android:layout_height="363dp"
+        app:layout_constraintBottom_toBottomOf="@+id/bottom_guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/top_guideline"
+        app:layout_constraintVertical_bias="0.006" />
 
     <Button
         android:id="@+id/cam_finish_b"
         android:layout_width="273dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="500dp"
-        android:layout_marginLeft="55dp"
-        android:text="@string/cam_finish" />
+        android:text="@string/cam_finish"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/bottom_guideline"
+        app:layout_constraintVertical_bias="0.288" />
 
     <Button
         android:id="@+id/button_restart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Restart"
-        android:layout_marginTop="600dp"
-        android:layout_marginLeft="150dp"/>
+        android:gravity="center_horizontal"
+        android:text="@string/restart"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/bottom_guideline"
+        app:layout_constraintVertical_bias="0.823" />
 
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

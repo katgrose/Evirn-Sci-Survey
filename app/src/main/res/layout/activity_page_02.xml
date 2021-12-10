@@ -8,6 +8,7 @@
     android:background="#889FE3"
     android:gravity="center"
     >
+    <!-- Unused -->
 
     <EditText
         android:id="@+id/User_Name"

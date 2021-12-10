@@ -1,4 +1,4 @@
-package com.example.evirn_sci_survey;
+package com.example.evirn_sci_survey.unused;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,9 @@ import android.view.View;
 import android.widget.Button;
 
 import android.widget.CheckBox;
+
+import com.example.evirn_sci_survey.Enjoyment_level;
+import com.example.evirn_sci_survey.R;
 
 public class Tools_page extends AppCompatActivity {
 

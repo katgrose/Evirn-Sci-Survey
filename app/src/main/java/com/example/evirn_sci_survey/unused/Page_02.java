@@ -1,4 +1,4 @@
-package com.example.evirn_sci_survey;
+package com.example.evirn_sci_survey.unused;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,9 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 /*import android.database;
 import android.database.sqlite;*/
-import android.view.View;
 import android.content.Intent;
 import android.widget.Button;
+
+import com.example.evirn_sci_survey.R;
 
 public class Page_02 extends AppCompatActivity {
 

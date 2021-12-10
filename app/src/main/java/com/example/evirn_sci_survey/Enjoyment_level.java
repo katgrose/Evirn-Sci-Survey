@@ -2,6 +2,7 @@ package com.example.evirn_sci_survey;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,7 +10,18 @@ import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.example.evirn_sci_survey.database.Answer;
+import com.example.evirn_sci_survey.database.AnswerDao;
+import com.example.evirn_sci_survey.database.SurveyQuestion;
+import com.example.evirn_sci_survey.database.SurveyQuestionAnswer;
+import com.example.evirn_sci_survey.database.SurveyQuestionAnswerDao;
+import com.example.evirn_sci_survey.database.SurveyQuestionDao;
+import com.example.evirn_sci_survey.database.SurveyRoomDatabase;
+
+import java.util.List;
+
 public class Enjoyment_level extends AppCompatActivity {
+    public static final String EXTRA_SURVEY_ID = "evirn_sci_survey.EXTRA_SURVEY_ID";
 
     TextView number_string;
     String status;
@@ -27,6 +39,11 @@ public class Enjoyment_level extends AppCompatActivity {
         number_string = (TextView) findViewById(R.id.number_string);
         enjoyButton = (Button) findViewById(R.id.Enjoyment_button);
 
+        int surveyId = getIntent().getIntExtra(EXTRA_SURVEY_ID, -1);
+        if(surveyId == -1) {
+            Intent intent = MainActivity.getIntent(Enjoyment_level.this);
+            startActivity(intent);
+        }
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -52,7 +69,6 @@ public class Enjoyment_level extends AppCompatActivity {
                 }
                 number_string.setText(emotion + " : " + status);
                 number_string.setVisibility(View.VISIBLE);
-
             }
 
             @Override
@@ -69,11 +85,29 @@ public class Enjoyment_level extends AppCompatActivity {
         enjoyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
+                SurveyQuestionDao questionDAO = SurveyRoomDatabase.getDatabase(getApplication()).surveyQuestionDao();
+                SurveyQuestionAnswerDao questionAnswerDAO = SurveyRoomDatabase.getDatabase(getApplication()).surveyQuestionAnswerDao();
+                AnswerDao answerDao = SurveyRoomDatabase.getDatabase(getApplication()).answerDao();
+
+                SurveyQuestion question = questionDAO.getQuestionFromOrder(surveyId, -2);
+                List<SurveyQuestionAnswer> offeredAnswers = questionAnswerDAO.getAnswersInQuestion(surveyId, question.getQuestionId());
+                for(int i = 0; i < offeredAnswers.size(); i++) {
+                    SurveyQuestionAnswer offeredAnswer = offeredAnswers.get(i);
+                    Answer answer = new Answer(offeredAnswer.getMofferedAnsId(), surveyId, question.getQuestionId(), "");
+                    answer.setSliderValue(seekBar.getProgress());
+                    answerDao.insert(answer);
+                }
+
                 Intent intent_enjoy = new Intent(Enjoyment_level.this, Camera_Interaction.class);
                 startActivity(intent_enjoy);
             }
         });
+    }
 
+    public static Intent getIntent(Context packageContext, int surveyId) {
+        Intent intent = new Intent(packageContext, Enjoyment_level.class);
+        intent.putExtra(EXTRA_SURVEY_ID, surveyId);
+        return intent;
     }
 
 

@@ -8,15 +8,26 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 /*import android.database;
 import android.database.sqlite;*/
-import android.view.View;
-import android.view.View.OnClickListener;
 import android.content.Intent;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.example.evirn_sci_survey.database.Answer;
+import com.example.evirn_sci_survey.database.AnswerDao;
+import com.example.evirn_sci_survey.database.Survey;
+import com.example.evirn_sci_survey.database.SurveyDao;
+import com.example.evirn_sci_survey.database.SurveyQuestion;
+import com.example.evirn_sci_survey.database.SurveyQuestionAnswer;
+import com.example.evirn_sci_survey.database.SurveyQuestionAnswerDao;
+import com.example.evirn_sci_survey.database.SurveyQuestionDao;
+import com.example.evirn_sci_survey.database.SurveyRoomDatabase;
+import com.example.evirn_sci_survey.unused.Page_02;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private TextView mFirstName;
+    private TextView mProjectName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +38,10 @@ public class MainActivity extends AppCompatActivity {
         int activeSurvey = sharedPref.getInt(getString(R.string.saved_active_survey_key), 1);
 
         mFirstName = findViewById(R.id.User_Name);
+        mProjectName = findViewById(R.id.Project_Name);
         Button nextButton = findViewById(R.id.main_button_next);
+
+        setDefaultValues();
 
         nextButton.setOnClickListener(v -> {
             if(mFirstName.getText().toString().equals("admin")) {
@@ -36,7 +50,18 @@ public class MainActivity extends AppCompatActivity {
                 editor.apply();
                 startActivity(AdminActivity.getIntent(MainActivity.this));
             } else {
-                Intent intent = new Intent(MainActivity.this, Page_02.class);
+                SurveyQuestionDao questionDAO = SurveyRoomDatabase.getDatabase(getApplication()).surveyQuestionDao();
+                SurveyQuestionAnswerDao questionAnswerDAO = SurveyRoomDatabase.getDatabase(getApplication()).surveyQuestionAnswerDao();
+                AnswerDao answerDao = SurveyRoomDatabase.getDatabase(getApplication()).answerDao();
+
+                SurveyQuestion question = questionDAO.getQuestionFromOrder(activeSurvey, -1);
+                List<SurveyQuestionAnswer> offeredAnswers = questionAnswerDAO.getAnswersInQuestion(activeSurvey, question.getQuestionId());
+                for(int i = 0; i < offeredAnswers.size(); i++) {
+                    SurveyQuestionAnswer offeredAnswer = offeredAnswers.get(i);
+                    Answer answer = new Answer(offeredAnswer.getMofferedAnsId(), activeSurvey, question.getQuestionId(), mFirstName.getText().toString());
+                    answerDao.insert(answer);
+                }
+                Intent intent = QuestionDisplay.getIntent(MainActivity.this, 1, activeSurvey, true);
                 startActivity(intent);
             }
         });
@@ -44,5 +69,37 @@ public class MainActivity extends AppCompatActivity {
 
     public static Intent getIntent(Context packageContext) {
         return new Intent(packageContext, MainActivity.class);
+    }
+
+    // Default values added to database at first time startup
+    private void setDefaultValues() {
+        SurveyDao dao = SurveyRoomDatabase.getDatabase(getApplication()).surveyDao();
+        if(dao.getAllSurveys().size() == 0) {
+            SurveyQuestionDao questionDAO = SurveyRoomDatabase.getDatabase(getApplication()).surveyQuestionDao();
+            SurveyQuestionAnswerDao questionAnswerDAO = SurveyRoomDatabase.getDatabase(getApplication()).surveyQuestionAnswerDao();
+            Survey survey = new Survey(1, "EnvironSciSurveyTest1", "11/21", "12/21");
+            dao.insert(survey);
+            survey.generateBasicQuestions(questionDAO, questionAnswerDAO);
+            SurveyQuestion question1 = new SurveyQuestion(1, "General Info", 1);
+            SurveyQuestion question2 = new SurveyQuestion(1, "How did you arrive in the workshop?", 2);
+            SurveyQuestion question3 = new SurveyQuestion(1, "What tools did you use?", 3);
+            questionDAO.Insert(question1, question2, question3);
+            SurveyQuestion q1 = questionDAO.getQuestionFromOrder(1, 1);
+            SurveyQuestion q2 = questionDAO.getQuestionFromOrder(1, 2);
+            SurveyQuestion q3 = questionDAO.getQuestionFromOrder(1, 3);
+            SurveyQuestionAnswer answer1 = new SurveyQuestionAnswer(1, q1.getQuestionId(), 0, "How often do you come?");
+            SurveyQuestionAnswer answer2 = new SurveyQuestionAnswer(1, q1.getQuestionId(), 1, "What grade are you in?");
+            SurveyQuestionAnswer answer3 = new SurveyQuestionAnswer(1, q2.getQuestionId(), 0, "How did you arrive?");
+            SurveyQuestionAnswer answer4 = new SurveyQuestionAnswer(1, q3.getQuestionId(), 0, "Tape");
+            SurveyQuestionAnswer answer5 = new SurveyQuestionAnswer(1, q3.getQuestionId(), 1, "Pen");
+            SurveyQuestionAnswer answer6 = new SurveyQuestionAnswer(1, q3.getQuestionId(), 2, "Scissors");
+            SurveyQuestionAnswer answer7 = new SurveyQuestionAnswer(1, q3.getQuestionId(), 3, "Screw Driver");
+            SurveyQuestionAnswer answer8 = new SurveyQuestionAnswer(1, q3.getQuestionId(), 4, "List any other tools here...");
+            answer4.setQuestionType("Checkbox");
+            answer5.setQuestionType("Checkbox");
+            answer6.setQuestionType("Checkbox");
+            answer7.setQuestionType("Checkbox");
+            questionAnswerDAO.Insert(answer1, answer2, answer3, answer4, answer5, answer6, answer7, answer8);
+        }
     }
 }

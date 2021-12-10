@@ -5,15 +5,14 @@
     android:layout_height="match_parent">
 
     <EditText
-        android:id="@+id/answer_lbl"
+        android:id="@+id/textbox"
         android:layout_width="304dp"
-        android:layout_height="60dp"
+        android:layout_height="80dp"
         android:layout_alignParentTop="true"
         android:layout_margin="20dp"
         android:inputType="text"
         android:textAlignment="center"
         android:textSize="20sp"
-        android:autofillHints=""
         tools:ignore="LabelFor" />
 
     <CheckBox
@@ -23,6 +22,22 @@
         android:layout_marginStart="25dp"
         android:layout_alignParentTop="true"
         android:textSize="20sp"
-        android:text="" />
+        />
+
+    <TextView
+        android:id="@+id/slider_lbl"
+        android:layout_width="185dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="0dp"
+        android:text="@string/status"
+        android:textAlignment="center"
+        android:textSize="20sp" />
+
+    <SeekBar
+        android:id="@+id/slider"
+        android:layout_width="298dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="60dp"
+        android:max="5" />
 
 </RelativeLayout>

@@ -8,6 +8,8 @@
     android:background="#889FE3"
     android:gravity="center">
 
+    <!-- Unused -->
+
     <EditText
         android:id="@+id/tool_page_question"
         android:layout_width="304dp"

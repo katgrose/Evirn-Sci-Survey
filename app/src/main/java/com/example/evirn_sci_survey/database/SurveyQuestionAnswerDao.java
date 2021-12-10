@@ -13,7 +13,7 @@ import java.util.List;
 @Dao
 public interface SurveyQuestionAnswerDao {
     @Insert
-    void insert(SurveyQuestionAnswer surveyQuestionAnswer);
+    void Insert(SurveyQuestionAnswer... answers);
 
     @Update
     void update(SurveyQuestionAnswer surveyQuestionAnswer);

@@ -22,8 +22,11 @@ public interface SurveyQuestionDao {
     @Query("SELECT * FROM surveyquestion")
     List<SurveyQuestion> getQuestions();
 
-    @Query("SELECT * FROM surveyquestion WHERE surveyId = :surveyId ORDER BY questionOrder")
+    @Query("SELECT * FROM surveyquestion WHERE surveyId = :surveyId AND questionOrder > -1 ORDER BY questionOrder")
     List<SurveyQuestion> getQuestionsInSurvey(int surveyId);
+
+    @Query("SELECT * FROM surveyquestion WHERE surveyId = :surveyId ORDER BY questionOrder")
+    List<SurveyQuestion> getAllQuestionsInSurvey(int surveyId);
 
     @Query("SELECT * FROM surveyquestion WHERE surveyId = :surveyId AND questionOrder = :questionOrder")
     SurveyQuestion getQuestionFromOrder(int surveyId, int questionOrder);
@@ -31,6 +34,6 @@ public interface SurveyQuestionDao {
     @Query("SELECT * FROM surveyquestion WHERE questionId = :questionId")
     SurveyQuestion getQuestionFromId(int questionId);
 
-    @Query("SELECT COUNT(surveyId) FROM surveyquestion WHERE surveyId = :surveyId")
+    @Query("SELECT COUNT(surveyId) FROM surveyquestion WHERE surveyId = :surveyId AND questionOrder > -1")
     Integer getRowCount(int surveyId);
 }

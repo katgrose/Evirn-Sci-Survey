@@ -14,6 +14,9 @@ import android.widget.Toast;
 
 import com.example.evirn_sci_survey.R;
 import com.example.evirn_sci_survey.database.Survey;
+import com.example.evirn_sci_survey.database.SurveyQuestionAnswerDao;
+import com.example.evirn_sci_survey.database.SurveyQuestionDao;
+import com.example.evirn_sci_survey.database.SurveyRoomDatabase;
 
 public class EditSurvey extends AppCompatActivity {
     private static final String EXTRA_ID = "com.example.evirn_sci_survey.EXTRA_ID";
@@ -54,7 +57,10 @@ public class EditSurvey extends AppCompatActivity {
             String startDate = mSurveyStart.getText().toString();
             String endDate = mSurveyEnd.getText().toString();
 
+            SurveyQuestionDao questionDAO = SurveyRoomDatabase.getDatabase(getApplication()).surveyQuestionDao();
+            SurveyQuestionAnswerDao questionAnswerDAO = SurveyRoomDatabase.getDatabase(getApplication()).surveyQuestionAnswerDao();
             Survey survey = new Survey(surveyId, description, startDate, endDate);
+            survey.generateBasicQuestions(questionDAO, questionAnswerDAO);
             Toast.makeText(EditSurvey.this,"Survey updated successfully", Toast.LENGTH_SHORT).show();
             mSurveyViewModel.update(survey);
             returnToSurveyList();

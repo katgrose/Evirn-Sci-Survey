@@ -67,7 +67,7 @@ public class EditQuestion extends AppCompatActivity implements EditList {
             mAddAnswerButton.setOnClickListener(view -> {
                 int answerCount = questionAnswerDAO.getAnswerCount(surveyId, question.getQuestionId());
                 SurveyQuestionAnswer surveyQuestionAnswer = new SurveyQuestionAnswer(surveyId, question.getQuestionId(), answerCount, "New Answer");
-                questionAnswerDAO.insert(surveyQuestionAnswer);
+                questionAnswerDAO.Insert(surveyQuestionAnswer);
                 refreshDisplay();
             });
         }

@@ -20,4 +20,6 @@ public interface AnswerDao {
     @Query("DELETE FROM answer")
     void deleteAll();
 
+    @Query("SELECT * FROM answer WHERE surveyId = :surveyId AND mofferedAnsId = :answerId")
+    List<Answer> getAnswersFromQuestionAnswer(int surveyId, int answerId);
 }

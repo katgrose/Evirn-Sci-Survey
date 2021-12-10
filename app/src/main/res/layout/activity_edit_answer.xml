@@ -54,19 +54,69 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.879" />
 
-    <CheckBox
-        android:id="@+id/checkbox"
+    <Spinner
+        android:id="@+id/questionType"
         android:layout_width="304dp"
         android:layout_height="80dp"
         android:layout_alignParentTop="true"
         android:layout_margin="50dp"
-        android:text="@string/is_checkbox"
-        android:textSize="20sp"
+        android:spinnerMode="dropdown"
         app:layout_constraintBottom_toTopOf="@+id/saveBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.242"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/answer_text"
         app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/min_lbl"
+        android:layout_width="47dp"
+        android:layout_height="25dp"
+        android:text="@string/minLbl"
+        app:layout_constraintBottom_toTopOf="@+id/saveBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.144"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/questionType"
+        app:layout_constraintVertical_bias="0.176" />
+
+    <EditText
+        android:id="@+id/slider_min"
+        android:layout_width="74dp"
+        android:layout_height="40dp"
+        android:hint="@string/min"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/saveBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.059"
+        app:layout_constraintStart_toEndOf="@+id/min_lbl"
+        app:layout_constraintTop_toBottomOf="@+id/questionType"
+        app:layout_constraintVertical_bias="0.169" />
+
+    <TextView
+        android:id="@+id/max_lbl"
+        android:layout_width="51dp"
+        android:layout_height="27dp"
+        android:text="@string/maxLbl"
+        app:layout_constraintBottom_toTopOf="@+id/saveBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.143"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/questionType"
+        app:layout_constraintVertical_bias="0.517" />
+
+    <EditText
+        android:id="@+id/slider_max"
+        android:layout_width="71dp"
+        android:layout_height="46dp"
+        android:hint="@string/max"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/saveBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.063"
+        app:layout_constraintStart_toEndOf="@+id/max_lbl"
+        app:layout_constraintTop_toBottomOf="@+id/questionType"
+        app:layout_constraintVertical_bias="0.519" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

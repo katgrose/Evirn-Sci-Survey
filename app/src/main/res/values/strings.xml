@@ -7,7 +7,6 @@
     <string name="add_survey">Add survey</string>
     <string name="add_item" />
     <string name="current_question_text">Question</string>
-    <string name="saved_question_order">com.example.project2store.SAVED_QUESTION_ID</string>
     <string name="next">Next</string>
     <string name="edit">Edit</string>
     <string name="delete">Delete</string>
@@ -58,4 +57,16 @@
     <string name="view_results">View Results</string>
     <string name="logout">Logout</string>
     <string name="is_checkbox">Is Checkbox</string>
+    <string name="restart">Restart</string>
+    <string name="min">Min</string>
+    <string name="minLbl">Min:</string>
+    <string name="max">Max</string>
+    <string name="maxLbl">Max:</string>
+    <string name="export_results">Export Results</string>
+
+    <string-array name="question_types">
+        <item>Textbox</item>
+        <item>Checkbox</item>
+        <item>Slider</item>
+    </string-array>
 </resources>

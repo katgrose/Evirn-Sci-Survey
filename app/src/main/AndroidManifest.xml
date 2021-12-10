@@ -2,6 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.evirn_sci_survey">
 
+    <uses-permission
+        android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
+        android:minSdkVersion="30" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="28" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -39,9 +45,9 @@
         <activity android:name=".QuestionDisplay" />
         <activity android:name=".Camera_Interaction"/>
         <activity android:name=".Enjoyment_level" />
-        <activity android:name=".Tools_page" />
-        <activity android:name=".Transportation_page" />
-        <activity android:name=".Page_02" />
+        <activity android:name=".unused.Tools_page" />
+        <activity android:name=".unused.Transportation_page" />
+        <activity android:name=".unused.Page_02" />
         <activity android:name=".AdminActivity"/>
         <activity android:name=".MainActivity">
             <intent-filter>

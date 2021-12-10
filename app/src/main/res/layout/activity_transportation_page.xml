@@ -8,8 +8,9 @@
     android:background="#889FE3"
     android:gravity="center">
 
-    <EditText
+    <!-- Unused -->
 
+    <EditText
         android:id="@+id/transportation_page"
         android:layout_width="411dp"
         android:layout_height="80dp"

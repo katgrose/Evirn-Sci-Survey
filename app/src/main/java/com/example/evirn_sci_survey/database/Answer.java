@@ -12,11 +12,11 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.Index;
+import androidx.room.PrimaryKey;
 
 @Entity(tableName = "answer",
         //Index to not trigger full data scan of parent table upon changes.
         indices = {@Index(value = {"surveyId", "questionId"})},
-        primaryKeys = {"mofferedAnsId", "surveyId", "questionId"},
         foreignKeys = {
                 //Has a relationship with SurveyQuestionAnswer --> Every survey question has an answer either 1) the offered one OR
                 @ForeignKey(
@@ -31,6 +31,9 @@ import androidx.room.Index;
                 )
         })
 public class Answer {
+    @PrimaryKey(autoGenerate = true)
+    private int answerId;
+
     @ColumnInfo(name = "mofferedAnsId")
     private int mofferedAnsId;
 
@@ -43,11 +46,38 @@ public class Answer {
     @ColumnInfo(name = "anotherAnsText")// 2) another text that the user types in
     private String manotherAnsText;
 
+    private int sliderValue;
+    private boolean checkboxValue;
+
+    public int getSliderValue() {
+        return sliderValue;
+    }
+
+    public void setSliderValue(int sliderValue) {
+        this.sliderValue = sliderValue;
+    }
+
+    public boolean isCheckboxValue() {
+        return checkboxValue;
+    }
+
+    public void setCheckboxValue(boolean checkboxValue) {
+        this.checkboxValue = checkboxValue;
+    }
+
     public Answer(int mofferedAnsId, int msurveyId, int mquestionId, String manotherAnsText){
         this.mofferedAnsId = mofferedAnsId;
         this.msurveyId = msurveyId;
         this.mquestionId = mquestionId;
         this.manotherAnsText = manotherAnsText;
+    }
+
+    public int getAnswerId() {
+        return answerId;
+    }
+
+    public void setAnswerId(int answerId) {
+        this.answerId = answerId;
     }
 
     public int getMofferedAnsId() {

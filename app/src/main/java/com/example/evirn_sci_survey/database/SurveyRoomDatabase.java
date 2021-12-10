@@ -56,17 +56,15 @@ public abstract class SurveyRoomDatabase extends RoomDatabase {
             super.onCreate(db);
             // If you want to keep data through app restarts,
             // comment out the following block
-            databaseWriteExecutor.execute(() -> {
+            /**databaseWriteExecutor.execute(() -> {
                 // Populate the database in the background.
                 // If you want to start with more surveys, just add them.
-            SurveyDao dao = INSTANCE.surveyDao();
-            dao.deleteAll();
+                SurveyDao dao = INSTANCE.surveyDao();
+                dao.deleteAll();
 
-            Survey survey = new Survey(1, "EnvironSciSurveyTest1", "11/21", "12/21");
-            dao.insert(survey);
-            survey = new Survey(2, "EnvironSciSurveyTest2", "11/3", "12/21");
-            dao.insert(survey);
-            });
+                Survey survey = new Survey(1, "EnvironSciSurveyTest1", "11/21", "12/21");
+                dao.insert(survey);
+            });*/
         }
     };
 }

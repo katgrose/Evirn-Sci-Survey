@@ -30,6 +30,7 @@ import java.util.List;
                 childColumns = {"questionId"}
         )
 })
+
 public class SurveyQuestionAnswer implements EditListItem {
 /*
     If PrimaryKey annotation is used on a Embedded field,
@@ -52,15 +53,45 @@ public class SurveyQuestionAnswer implements EditListItem {
     @ColumnInfo(name = "offeredAnsText")
     private String mofferedAnsText;
 
-    public void setCheckbox(boolean checkbox) {
-        this.checkbox = checkbox;
+    private String questionType;
+
+    private int sliderMin;
+    private int sliderMax;
+
+    public int getSliderMin() {
+        return sliderMin;
     }
 
-    public boolean isCheckbox() {
-        return checkbox;
+    public void setSliderMin(int sliderMin) {
+        this.sliderMin = sliderMin;
     }
 
-    private boolean checkbox;
+    public int getSliderMax() {
+        return sliderMax;
+    }
+
+    public void setSliderMax(int sliderMax) {
+        this.sliderMax = sliderMax;
+    }
+
+    public void setQuestionType(String questionType) {
+        this.questionType = questionType;
+    }
+
+    public String getQuestionType() {
+        return questionType;
+    }
+    public int getQuestionIndex() {
+        if(questionType != null) {
+            switch (questionType) {
+                case "Checkbox": return 1;
+                case "Slider": return 2;
+                default: return 0; // Textbox is default
+            }
+        } else {
+            return 0;
+        }
+    }
 
     public SurveyQuestionAnswer(int msurveyId, int mquestionId, int mansOrder, String mofferedAnsText ){
         this.msurveyId = msurveyId;
