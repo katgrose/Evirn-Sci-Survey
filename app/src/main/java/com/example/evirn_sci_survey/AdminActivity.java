@@ -64,15 +64,21 @@ public class AdminActivity extends AppCompatActivity {
                 startActivity(intent);
             });
 
+            /*
+            When clicking 'View Resutls' this the excel spreadsheet gets created
+             */
             viewResultsBtn.setOnClickListener(v -> {
                 // Export Results here
                 ActivityCompat.requestPermissions(AdminActivity.this, new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE},
                         PackageManager.PERMISSION_GRANTED);
+
+                // Looks like they were thinking about adding an option for the CSV to go to an external storage device
                 if(!Environment.isExternalStorageManager()) {
                     Intent intent = new Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION);
                     startActivity(intent);
                     return;
                 }
+                // Executes the Excel Spreadsheet creater
                 String result = ExcelExporter.export(questionDao, questionAnswerDao, answerDao, activeSurvey);
                 Toast.makeText(this,  result, Toast.LENGTH_SHORT).show();
             });
