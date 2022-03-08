@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/crazy/AndroidStudioProjects/Evirn-Sci-Survery/app/src/main/res/layout/activity_camera__interaction.xml" value="0.5541666666666667" />
+        <entry key="..\:/Users/crazy/AndroidStudioProjects/Evirn-Sci-Survery/app/src/main/res/layout/activity_edit_answer.xml" value="0.14074074074074075" />
+        <entry key="..\:/Users/crazy/AndroidStudioProjects/Evirn-Sci-Survery/app/src/main/res/layout/activity_login.xml" value="0.2695035460992908" />
+        <entry key="..\:/Users/crazy/AndroidStudioProjects/Evirn-Sci-Survery/app/src/main/res/layout/activity_main.xml" value="0.5541666666666667" />
+        <entry key="..\:/Users/crazy/AndroidStudioProjects/Evirn-Sci-Survery/app/src/main/res/layout/activity_question_display.xml" value="0.14074074074074075" />
         <entry key="app/src/main/res/layout/activity_admin.xml" value="0.23324275362318841" />
         <entry key="app/src/main/res/layout/activity_camera__interaction.xml" value="0.23324275362318841" />
         <entry key="app/src/main/res/layout/activity_edit_answer.xml" value="0.24687624145744774" />
@@ -24,7 +29,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

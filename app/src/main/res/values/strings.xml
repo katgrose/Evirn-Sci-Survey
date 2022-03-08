@@ -63,6 +63,10 @@
     <string name="max">Max</string>
     <string name="maxLbl">Max:</string>
     <string name="export_results">Export Results</string>
+    <string name="admin_button_text">Admin</string>
+    <string name="loginButtonText">Login</string>
+    <string name="passwordEditText">Password</string>
+    <string name="usernameEditText">Username</string>
 
     <string-array name="question_types">
         <item>Textbox</item>

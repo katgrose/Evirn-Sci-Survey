@@ -5,7 +5,9 @@
     <uses-permission
         android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
         android:minSdkVersion="30" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="28" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
@@ -15,6 +17,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
         <activity
             android:name=".editor.EditAnswer"
             android:exported="false" />
@@ -43,12 +48,12 @@
         </activity>
         <activity android:name=".editor.EditQuestions" />
         <activity android:name=".QuestionDisplay" />
-        <activity android:name=".Camera_Interaction"/>
+        <activity android:name=".Camera_Interaction" />
         <activity android:name=".Enjoyment_level" />
         <activity android:name=".unused.Tools_page" />
         <activity android:name=".unused.Transportation_page" />
         <activity android:name=".unused.Page_02" />
-        <activity android:name=".AdminActivity"/>
+        <activity android:name=".AdminActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

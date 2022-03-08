@@ -40,16 +40,16 @@ public class MainActivity extends AppCompatActivity {
         mFirstName = findViewById(R.id.User_Name);
         mProjectName = findViewById(R.id.Project_Name);
         Button nextButton = findViewById(R.id.main_button_next);
+        Button adminLoginButton = findViewById(R.id.admin_login_button);
 
         setDefaultValues();
 
+        adminLoginButton.setOnClickListener(view -> {
+            Intent intent = LoginActivity.getIntent(MainActivity.this);
+            startActivity(intent);
+        });
+
         nextButton.setOnClickListener(v -> {
-            if(mFirstName.getText().toString().equals("admin")) {
-                SharedPreferences.Editor editor = sharedPref.edit();
-                editor.putBoolean(getString(R.string.saved_logged_in_key), true);
-                editor.apply();
-                startActivity(AdminActivity.getIntent(MainActivity.this));
-            } else {
                 SurveyQuestionDao questionDAO = SurveyRoomDatabase.getDatabase(getApplication()).surveyQuestionDao();
                 SurveyQuestionAnswerDao questionAnswerDAO = SurveyRoomDatabase.getDatabase(getApplication()).surveyQuestionAnswerDao();
                 AnswerDao answerDao = SurveyRoomDatabase.getDatabase(getApplication()).answerDao();
@@ -63,7 +63,6 @@ public class MainActivity extends AppCompatActivity {
                 }
                 Intent intent = QuestionDisplay.getIntent(MainActivity.this, 1, activeSurvey, true);
                 startActivity(intent);
-            }
         });
     }
 
