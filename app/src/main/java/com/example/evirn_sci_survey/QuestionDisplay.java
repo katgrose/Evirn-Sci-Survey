@@ -96,8 +96,13 @@ public class QuestionDisplay extends AppCompatActivity implements EditList {
                     answer.setCheckboxValue(checked);
                     answerDao.insert(answer);
                 }
-                Intent intent = getIntent(QuestionDisplay.this, questionOrder-1, surveyId, isMainOrigin);
-                startActivity(intent);
+                if(questionOrder-1==0) {
+                    Intent intent = new Intent(QuestionDisplay.this, MainActivity.class);
+                    startActivity(intent);
+                } else {
+                    Intent intent = getIntent(QuestionDisplay.this, questionOrder - 1, surveyId, isMainOrigin);
+                    startActivity(intent);
+                }
             });
         }
     }
