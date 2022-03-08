@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -29,15 +30,20 @@ public class Enjoyment_level extends AppCompatActivity {
 
     private Button enjoyButton;
     private SeekBar seekBar;
+    private Button backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enjoyment_level);
 
+        SharedPreferences sharedPref = getSharedPreferences(getString(R.string.saved_prefs_location), Context.MODE_PRIVATE);
+        int activeSurvey = sharedPref.getInt(getString(R.string.saved_active_survey_key), 1);
+
         seekBar = (SeekBar) findViewById(R.id.seekBar_0_5);
         number_string = (TextView) findViewById(R.id.number_string);
         enjoyButton = (Button) findViewById(R.id.Enjoyment_button);
+        backButton = (Button) findViewById(R.id.backBtnEnjoy);
 
         int surveyId = getIntent().getIntExtra(EXTRA_SURVEY_ID, -1);
         if(surveyId == -1) {
@@ -102,6 +108,12 @@ public class Enjoyment_level extends AppCompatActivity {
                 startActivity(intent_enjoy);
             }
         });
+
+        backButton.setOnClickListener(v -> {
+            Intent intent = QuestionDisplay.getIntent(Enjoyment_level.this, 3, activeSurvey, true);
+            startActivity(intent);
+        });
+
     }
 
     public static Intent getIntent(Context packageContext, int surveyId) {
