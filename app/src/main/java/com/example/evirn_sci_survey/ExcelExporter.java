@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Environment;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -28,6 +29,8 @@ import java.util.List;
 
 public class ExcelExporter {
 
+    private static final String TAG = "ExcelExporter";
+
     /**
      * Writes an excel file to an SD card
      *
@@ -40,6 +43,9 @@ public class ExcelExporter {
      */
     @RequiresApi(api = Build.VERSION_CODES.R)
     public static String export(SurveyQuestionDao questionDao, SurveyQuestionAnswerDao questionAnswerDao, AnswerDao answerDao, int activeSurvey) {
+
+        Log.i(TAG, "Excel Exporter has executed");
+
         HSSFWorkbook workbook = new HSSFWorkbook(); // Added this string here
         List<SurveyQuestion> questions = questionDao.getAllQuestionsInSurvey(activeSurvey);
         for(int i = 0; i < questions.size(); i++) {
