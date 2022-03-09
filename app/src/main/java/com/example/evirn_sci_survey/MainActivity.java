@@ -40,30 +40,29 @@ public class MainActivity extends AppCompatActivity {
         mFirstName = findViewById(R.id.User_Name);
         mProjectName = findViewById(R.id.Project_Name);
         Button nextButton = findViewById(R.id.main_button_next);
+        Button adminLoginButton = findViewById(R.id.admin_login_button);
 
         setDefaultValues();
 
-        nextButton.setOnClickListener(v -> {
-            if(mFirstName.getText().toString().equals("admin")) {
-                SharedPreferences.Editor editor = sharedPref.edit();
-                editor.putBoolean(getString(R.string.saved_logged_in_key), true);
-                editor.apply();
-                startActivity(AdminActivity.getIntent(MainActivity.this));
-            } else {
-                SurveyQuestionDao questionDAO = SurveyRoomDatabase.getDatabase(getApplication()).surveyQuestionDao();
-                SurveyQuestionAnswerDao questionAnswerDAO = SurveyRoomDatabase.getDatabase(getApplication()).surveyQuestionAnswerDao();
-                AnswerDao answerDao = SurveyRoomDatabase.getDatabase(getApplication()).answerDao();
+        adminLoginButton.setOnClickListener(view -> {
+            Intent intent = LoginActivity.getIntent(MainActivity.this);
+            startActivity(intent);
+        });
 
-                SurveyQuestion question = questionDAO.getQuestionFromOrder(activeSurvey, -1);
-                List<SurveyQuestionAnswer> offeredAnswers = questionAnswerDAO.getAnswersInQuestion(activeSurvey, question.getQuestionId());
-                for(int i = 0; i < offeredAnswers.size(); i++) {
-                    SurveyQuestionAnswer offeredAnswer = offeredAnswers.get(i);
-                    Answer answer = new Answer(offeredAnswer.getMofferedAnsId(), activeSurvey, question.getQuestionId(), mFirstName.getText().toString());
-                    answerDao.insert(answer);
-                }
-                Intent intent = QuestionDisplay.getIntent(MainActivity.this, 1, activeSurvey, true);
-                startActivity(intent);
+        nextButton.setOnClickListener(v -> {
+            SurveyQuestionDao questionDAO = SurveyRoomDatabase.getDatabase(getApplication()).surveyQuestionDao();
+            SurveyQuestionAnswerDao questionAnswerDAO = SurveyRoomDatabase.getDatabase(getApplication()).surveyQuestionAnswerDao();
+            AnswerDao answerDao = SurveyRoomDatabase.getDatabase(getApplication()).answerDao();
+
+            SurveyQuestion question = questionDAO.getQuestionFromOrder(activeSurvey, -1);
+            List<SurveyQuestionAnswer> offeredAnswers = questionAnswerDAO.getAnswersInQuestion(activeSurvey, question.getQuestionId());
+            for(int i = 0; i < offeredAnswers.size(); i++) {
+                SurveyQuestionAnswer offeredAnswer = offeredAnswers.get(i);
+                Answer answer = new Answer(offeredAnswer.getMofferedAnsId(), activeSurvey, question.getQuestionId(), mFirstName.getText().toString());
+                answerDao.insert(answer);
             }
+            Intent intent = QuestionDisplay.getIntent(MainActivity.this, 1, activeSurvey, true);
+            startActivity(intent);
         });
     }
 
