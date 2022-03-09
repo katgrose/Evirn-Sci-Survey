@@ -40,8 +40,7 @@
             android:layout_width="298dp"
             android:layout_height="52dp"
             android:layout_marginTop="0dp"
-            android:max="5"
-            />
+            android:max="5" />
 
         <Button
             android:id="@+id/Enjoyment_button"
@@ -56,6 +55,12 @@
             android:text="@string/string_main_page_button"
             android:textAlignment="center"
             android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/backBtnEnjoy"
+            android:layout_width="133dp"
+            android:layout_height="wrap_content"
+            android:text="@string/back" />
 
 
     </LinearLayout>

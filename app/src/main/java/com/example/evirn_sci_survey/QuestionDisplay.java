@@ -36,6 +36,7 @@ public class QuestionDisplay extends AppCompatActivity implements EditList {
     ListView mListView;
     TextView questionLbl;
     Button nextBtn;
+    Button backBtn;
     AnswerListAdapter adapter;
 
     SurveyQuestion question;
@@ -65,6 +66,7 @@ public class QuestionDisplay extends AppCompatActivity implements EditList {
             questionLbl = findViewById(R.id.question_lbl);
             mListView = findViewById(R.id.answer_choices);
             nextBtn = findViewById(R.id.nextBtn);
+            backBtn = findViewById(R.id.backBtn);
 
             questionLbl.setText(question.getQuestionText());
 
@@ -82,6 +84,25 @@ public class QuestionDisplay extends AppCompatActivity implements EditList {
                 }
                 Intent intent = getIntent(QuestionDisplay.this, questionOrder+1, surveyId, isMainOrigin);
                 startActivity(intent);
+            });
+
+            backBtn.setOnClickListener(v -> {
+                List<SurveyQuestionAnswer> offeredAnswers = questionAnswerDAO.getAnswersInQuestion(surveyId, question.getQuestionId());
+                for(int i = 0; i < offeredAnswers.size(); i++) {
+                    SurveyQuestionAnswer offeredAnswer = offeredAnswers.get(i);
+                    Answer answer = new Answer(offeredAnswer.getMofferedAnsId(), surveyId, question.getQuestionId(), adapter.textBox.getText().toString());
+                    answer.setSliderValue(adapter.slider.getProgress());
+                    boolean checked = adapter.checkBox.isChecked();
+                    answer.setCheckboxValue(checked);
+                    answerDao.insert(answer);
+                }
+                if(questionOrder-1==0) {
+                    Intent intent = new Intent(QuestionDisplay.this, MainActivity.class);
+                    startActivity(intent);
+                } else {
+                    Intent intent = getIntent(QuestionDisplay.this, questionOrder - 1, surveyId, isMainOrigin);
+                    startActivity(intent);
+                }
             });
         }
     }
