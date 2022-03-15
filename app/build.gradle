@@ -62,6 +62,12 @@ dependencies {
     })
     androidTestImplementation "androidx.test.ext:junit:$rootProject.androidxJunitVersion"
 
+
+    // For Type Conversion
+    implementation "android.arch.persistence.room:runtime:1.0.0-alpha3"
+    annotationProcessor "android.arch.persistence.room:compiler:1.0.0-alpha3"
+    implementation 'com.google.code.gson:gson:2.6.2'
+
     // For excel export
     implementation 'net.sourceforge.jexcelapi:jxl:2.6.12'
     implementation 'org.apache.poi:poi:3.17'
