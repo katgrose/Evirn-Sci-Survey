@@ -13,18 +13,22 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
+import androidx.room.TypeConverter;
+import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Survey.class, SurveyQuestion.class, SurveyQuestionAnswer.class, Answer.class}, version = 6, exportSchema = false)
+@Database(entities = {Survey.class, SurveyQuestion.class, SurveyQuestionAnswer.class, Answer.class, Response.class}, version = 7, exportSchema = false)
+@TypeConverters({Converters.class})
 public abstract class SurveyRoomDatabase extends RoomDatabase {
 
     public abstract SurveyDao surveyDao();
     public abstract SurveyQuestionDao surveyQuestionDao();
     public abstract SurveyQuestionAnswerDao surveyQuestionAnswerDao();
     public abstract AnswerDao answerDao();
+    public abstract ResponseDao responseDao();
 
     private static volatile SurveyRoomDatabase INSTANCE;
     private static final int NUMBER_OF_THREADS = 4;

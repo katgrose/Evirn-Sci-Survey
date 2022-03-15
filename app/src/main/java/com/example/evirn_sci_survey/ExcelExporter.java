@@ -32,13 +32,13 @@ public class ExcelExporter {
     public static String export(SurveyQuestionDao questionDao, SurveyQuestionAnswerDao questionAnswerDao, AnswerDao answerDao, int activeSurvey) {
         HSSFWorkbook workbook = new HSSFWorkbook();
         List<SurveyQuestion> questions = questionDao.getAllQuestionsInSurvey(activeSurvey);
+
         for(int i = 0; i < questions.size(); i++) {
             SurveyQuestion question = questions.get(i);
-            HSSFSheet sheet = workbook.createSheet("Question " + i);
+            HSSFSheet sheet = workbook.createSheet("Question" + i);
             HSSFRow row = sheet.createRow(0);
             HSSFCell cell = row.createCell(0);
             cell.setCellValue(question.getQuestionText());
-
             row = sheet.getRow(1);
             if(row == null) {
                 row = sheet.createRow(1);

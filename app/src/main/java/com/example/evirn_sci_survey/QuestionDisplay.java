@@ -12,6 +12,8 @@ import android.widget.Toast;
 
 import com.example.evirn_sci_survey.database.Answer;
 import com.example.evirn_sci_survey.database.AnswerDao;
+import com.example.evirn_sci_survey.database.Response;
+import com.example.evirn_sci_survey.database.ResponseDao;
 import com.example.evirn_sci_survey.database.SurveyQuestion;
 import com.example.evirn_sci_survey.database.SurveyQuestionAnswer;
 import com.example.evirn_sci_survey.database.SurveyQuestionAnswerDao;
@@ -32,6 +34,7 @@ public class QuestionDisplay extends AppCompatActivity implements EditList {
     private SurveyQuestionDao questionDAO;
     private SurveyQuestionAnswerDao questionAnswerDAO;
     private AnswerDao answerDao;
+    private ResponseDao responseDao;
 
     ListView mListView;
     TextView questionLbl;
@@ -40,6 +43,7 @@ public class QuestionDisplay extends AppCompatActivity implements EditList {
     AnswerListAdapter adapter;
 
     SurveyQuestion question;
+    Response response;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
