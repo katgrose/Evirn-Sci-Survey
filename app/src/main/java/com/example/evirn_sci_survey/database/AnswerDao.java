@@ -12,7 +12,7 @@ import java.util.List;
 @Dao
 public interface AnswerDao {
     @Insert
-    void insert(Answer answer);
+    void insert(Answer... answers);
 
     @Update
     void update(Answer answer);
@@ -22,4 +22,7 @@ public interface AnswerDao {
 
     @Query("SELECT * FROM answer WHERE surveyId = :surveyId AND mofferedAnsId = :answerId")
     List<Answer> getAnswersFromQuestionAnswer(int surveyId, int answerId);
+
+    @Query("SELECT * FROM answer")
+    List<Answer> getAllAnswers();
 }

@@ -27,6 +27,9 @@ public interface SurveyQuestionAnswerDao {
     @Query("SELECT * FROM surveyquestionanswer ORDER BY surveyId DESC")
     LiveData<List<SurveyQuestionAnswer>> getAllSurveyOfferedAnswers();
 
+    @Query("SELECT * FROM surveyquestionanswer ORDER BY surveyId DESC")
+    List<SurveyQuestionAnswer> getAllSurveyAnswers();
+
     @Query("SELECT * FROM surveyquestionanswer WHERE surveyId = :surveyId AND questionId = :questionId ORDER BY ansOrder")
     List<SurveyQuestionAnswer> getAnswersInQuestion(int surveyId, int questionId);
 

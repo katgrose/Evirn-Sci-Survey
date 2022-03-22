@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Environment;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -28,9 +29,24 @@ import java.util.List;
 
 public class ExcelExporter {
 
+    private static final String TAG = "ExcelExporter";
+
+    /**
+     * Writes an excel file to an SD card
+     *
+     *
+     * @param questionDao
+     * @param questionAnswerDao
+     * @param answerDao
+     * @param activeSurvey
+     * @return String containing if the excel file write was successful or not
+     */
     @RequiresApi(api = Build.VERSION_CODES.R)
     public static String export(SurveyQuestionDao questionDao, SurveyQuestionAnswerDao questionAnswerDao, AnswerDao answerDao, int activeSurvey) {
-        HSSFWorkbook workbook = new HSSFWorkbook();
+
+        Log.i(TAG, "Excel Exporter has executed");
+
+        HSSFWorkbook workbook = new HSSFWorkbook(); // Added this string here
         List<SurveyQuestion> questions = questionDao.getAllQuestionsInSurvey(activeSurvey);
 
         for(int i = 0; i < questions.size(); i++) {
@@ -84,11 +100,14 @@ public class ExcelExporter {
             }
         }
 
-        File filePath = new File(Environment.getExternalStorageDirectory() + "/Survey Data.xls");
-        String result = "";
+        // Get the directory of the storage card
+        String baseDir = Environment.getExternalStorageDirectory().getAbsolutePath();
+        File filePath = new File(baseDir + "/Survey Data.xls");
+
+        String result = ""; // Result string
         try {
             if(!filePath.exists()) { filePath.createNewFile(); }
-            FileOutputStream outputStream = new FileOutputStream(filePath);
+            FileOutputStream outputStream = new FileOutputStream(filePath); // Writing the Excel file to path
             workbook.write(outputStream);
             outputStream.flush();
             outputStream.close();
@@ -98,6 +117,7 @@ public class ExcelExporter {
             result = "Error writing to file";
         }
 
+        // Returns a
         return result;
     }
 }
