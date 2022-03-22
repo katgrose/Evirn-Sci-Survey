@@ -49,6 +49,7 @@
         <activity android:name=".unused.Transportation_page" />
         <activity android:name=".unused.Page_02" />
         <activity android:name=".AdminActivity"/>
+        <activity android:name=".LoginActivity"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

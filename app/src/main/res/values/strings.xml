@@ -8,6 +8,7 @@
     <string name="add_item" />
     <string name="current_question_text">Question</string>
     <string name="next">Next</string>
+    <string name="back">Back</string>
     <string name="edit">Edit</string>
     <string name="delete">Delete</string>
     <string name="start_survey">Start Survey</string>
@@ -63,6 +64,10 @@
     <string name="max">Max</string>
     <string name="maxLbl">Max:</string>
     <string name="export_results">Export Results</string>
+    <string name="loginButtonText">Login</string>
+    <string name="passwordEditText">Password</string>
+    <string name="usernameEditText">Username</string>
+    <string name="admin_button_text">Admin</string>
 
     <string-array name="question_types">
         <item>Textbox</item>

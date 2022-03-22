@@ -48,13 +48,13 @@ public class ExcelExporter {
 
         HSSFWorkbook workbook = new HSSFWorkbook(); // Added this string here
         List<SurveyQuestion> questions = questionDao.getAllQuestionsInSurvey(activeSurvey);
+
         for(int i = 0; i < questions.size(); i++) {
             SurveyQuestion question = questions.get(i);
-            HSSFSheet sheet = workbook.createSheet("Question " + i);
+            HSSFSheet sheet = workbook.createSheet("Question" + i);
             HSSFRow row = sheet.createRow(0);
             HSSFCell cell = row.createCell(0);
             cell.setCellValue(question.getQuestionText());
-
             row = sheet.getRow(1);
             if(row == null) {
                 row = sheet.createRow(1);

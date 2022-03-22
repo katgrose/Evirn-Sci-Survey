@@ -9,11 +9,14 @@ import android.os.Bundle;
 /*import android.database;
 import android.database.sqlite;*/
 import android.content.Intent;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.evirn_sci_survey.database.Answer;
 import com.example.evirn_sci_survey.database.AnswerDao;
+import com.example.evirn_sci_survey.database.Response;
+import com.example.evirn_sci_survey.database.ResponseDao;
 import com.example.evirn_sci_survey.database.Survey;
 import com.example.evirn_sci_survey.database.SurveyDao;
 import com.example.evirn_sci_survey.database.SurveyQuestion;
@@ -23,9 +26,12 @@ import com.example.evirn_sci_survey.database.SurveyQuestionDao;
 import com.example.evirn_sci_survey.database.SurveyRoomDatabase;
 import com.example.evirn_sci_survey.unused.Page_02;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = "MainActivity";
+
     private TextView mFirstName;
     private TextView mProjectName;
 
@@ -40,8 +46,14 @@ public class MainActivity extends AppCompatActivity {
         mFirstName = findViewById(R.id.User_Name); // Gets the name of the user?
         mProjectName = findViewById(R.id.Project_Name);
         Button nextButton = findViewById(R.id.main_button_next);
+        Button adminLoginButton = findViewById(R.id.admin_login_button);
 
         setDefaultValues();
+
+        adminLoginButton.setOnClickListener(view -> {
+            Intent intent = LoginActivity.getIntent(MainActivity.this);
+            startActivity(intent);
+        });
 
         nextButton.setOnClickListener(v -> {
             if(mFirstName.getText().toString().equals("admin")) {
