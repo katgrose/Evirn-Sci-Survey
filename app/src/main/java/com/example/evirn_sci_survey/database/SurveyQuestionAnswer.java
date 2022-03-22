@@ -42,13 +42,13 @@ public class SurveyQuestionAnswer implements EditListItem {
     private int mofferedAnsId;
 
     @ColumnInfo(name = "surveyId")
-    private int msurveyId;
+    private int msurveyId; // Survey the question belongs to
 
-    @ColumnInfo(name = "questionId")
-    private int mquestionId;
+    @ColumnInfo(name = "questionId") // Comes from the Survey Question class
+    private int mquestionId; // The question ID (presumably means something to the survey)
 
     @ColumnInfo(name = "ansOrder")
-    private  int mansOrder;
+    private int mansOrder; // The order the answer appears in. This is so a single question can have multiple fields for some reason
 
     @ColumnInfo(name = "offeredAnsText")
     private String mofferedAnsText;
@@ -81,6 +81,13 @@ public class SurveyQuestionAnswer implements EditListItem {
     public String getQuestionType() {
         return questionType;
     }
+
+    /*
+    Returns the kind of question type. Aka, how the question is answered with.
+    Textbox = 0
+    Checkbox = 1
+    Slider = 2
+     */
     public int getQuestionIndex() {
         if(questionType != null) {
             switch (questionType) {
@@ -92,7 +99,20 @@ public class SurveyQuestionAnswer implements EditListItem {
             return 0;
         }
     }
-
+    /**
+     * Constructor for the SurveyQuestionAnswer
+     * @param msurveyId
+     *      - Survey ID where the question is located
+     * @param mquestionId
+     *      - The ID of the question
+     *      - Foreign key to the SurveyQuestion table
+     * @param mansOrder
+     *      - The order in which the answer of the question appears/needs to be stored
+     *          - For instance, an answer to a question can have multiple parts and this
+     *            indicated the order of answers
+     * @param mofferedAnsText
+     *      - The answer itself to the question.
+     */
     public SurveyQuestionAnswer(int msurveyId, int mquestionId, int mansOrder, String mofferedAnsText ){
         this.msurveyId = msurveyId;
         this.mquestionId = mquestionId;

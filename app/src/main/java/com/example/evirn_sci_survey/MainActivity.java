@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sharedPref = getSharedPreferences(getString(R.string.saved_prefs_location), Context.MODE_PRIVATE);
         int activeSurvey = sharedPref.getInt(getString(R.string.saved_active_survey_key), 1);
 
-        mFirstName = findViewById(R.id.User_Name);
+        mFirstName = findViewById(R.id.User_Name); // Gets the name of the user?
         mProjectName = findViewById(R.id.Project_Name);
         Button nextButton = findViewById(R.id.main_button_next);
 
@@ -55,10 +55,10 @@ public class MainActivity extends AppCompatActivity {
                 AnswerDao answerDao = SurveyRoomDatabase.getDatabase(getApplication()).answerDao();
 
                 SurveyQuestion question = questionDAO.getQuestionFromOrder(activeSurvey, -1);
-                List<SurveyQuestionAnswer> offeredAnswers = questionAnswerDAO.getAnswersInQuestion(activeSurvey, question.getQuestionId());
-                for(int i = 0; i < offeredAnswers.size(); i++) {
+                List<SurveyQuestionAnswer> offeredAnswers = questionAnswerDAO.getAnswersInQuestion(activeSurvey, question.getQuestionId()); // Getting all the answers in the questions?
+                for(int i = 0; i < offeredAnswers.size(); i++) { // Inserting the answers
                     SurveyQuestionAnswer offeredAnswer = offeredAnswers.get(i);
-                    Answer answer = new Answer(offeredAnswer.getMofferedAnsId(), activeSurvey, question.getQuestionId(), mFirstName.getText().toString());
+                    Answer answer = new Answer(offeredAnswer.getMofferedAnsId(), activeSurvey, question.getQuestionId(), mFirstName.getText().toString()); // Inserts the name of the user
                     answerDao.insert(answer);
                 }
                 Intent intent = QuestionDisplay.getIntent(MainActivity.this, 1, activeSurvey, true);

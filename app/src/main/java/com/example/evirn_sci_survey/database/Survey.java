@@ -21,22 +21,23 @@ public class Survey implements EditListItem {
     //Generates a primary key automatically
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "surveyId")
-    private int msurveyId;
+    private int msurveyId; // From what I understand, each survey has a unique ID so you can have multiple surveys
 
     @ColumnInfo(name = "description")
-    private String mdescription;
+    private String mdescription; // Description of that survey
 
     @ColumnInfo(name = "startDate")
-    private String mstartDate;
+    private String mstartDate; // Date the survey is going to start
 
     @ColumnInfo(name = "endDate")
-    private String mendDate;
+    private String mendDate; // Date the survey is going to end
 
     @Ignore
     public Survey(String mdescription) {
         this.mdescription = mdescription;
     }
 
+    // Constructor
     public Survey(int msurveyId, String mdescription, String mstartDate, String mendDate){
         this.msurveyId = msurveyId;
         this.mdescription = mdescription;
@@ -76,6 +77,9 @@ public class Survey implements EditListItem {
         this.mendDate = mendDate;
     }
 
+    /*
+    I think this method below is what the previous group used to build a fake dataset to test with?
+     */
     public void generateBasicQuestions(SurveyQuestionDao questionDAO, SurveyQuestionAnswerDao questionAnswerDAO) {
         // For creating placeholder database questions for questions that are built in manually.
         // This is so that done so that we have a questionId to create answers for.

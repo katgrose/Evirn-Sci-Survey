@@ -29,6 +29,9 @@ import java.util.List;
 
 @RunWith(AndroidJUnit4.class)
 public class SurveryDaoTest {
+
+    private static final String TAG = "SurveyDaoTest";
+
     private SurveyDao surveyDao;
     private SurveyRoomDatabase surveyDaoTest;
 
@@ -40,21 +43,23 @@ public class SurveryDaoTest {
         surveyDao = surveyDaoTest.surveyDao();
     }
 
+
     @After
     public void closeDb() throws IOException {
         surveyDaoTest.close();
     }
 
+
     @Test
     public void insertASurvey() throws Exception {
         Survey temp = new Survey(0, "Random Q", "03-08-2022", "03-09-2022");
         // Insert the record
-        surveyDao.insert(temp);
-
+        surveyDao.insert(new Survey(0, "Random Q", "03-08-2022", "03-09-2022"));
+        surveyDao.insert(new Survey(0, "Random Q", "03-08-2022", "03-09-2022"));
         // Getting the results
         List<Survey> result = surveyDao.getAllSurveys();
-
-        assertEquals(result.size(), 1);
+        assertEquals(result.size(), 2);
+        Log.i(TAG, "insertASurvey: " + result.get(0).getListItemText());
     }
 
 //    public Survey(int msurveyId, String mdescription, String mstartDate, String mendDate){
