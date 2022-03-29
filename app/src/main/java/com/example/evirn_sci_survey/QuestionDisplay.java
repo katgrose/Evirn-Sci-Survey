@@ -56,8 +56,13 @@ public class QuestionDisplay extends AppCompatActivity implements EditList {
 
         questionDAO = SurveyRoomDatabase.getDatabase(getApplication()).surveyQuestionDao();
         questionAnswerDAO = SurveyRoomDatabase.getDatabase(getApplication()).surveyQuestionAnswerDao();
+        responseDao = SurveyRoomDatabase.getDatabase(getApplication()).responseDao();
         answerDao = SurveyRoomDatabase.getDatabase(getApplication()).answerDao();
         question = questionDAO.getQuestionFromOrder(surveyId, questionOrder);
+
+        Bundle extras = getIntent().getExtras();
+        response = responseDao.getResponsesByID(extras.getInt("RESPONSE_ID_CURRENT"));
+
 
         if(question == null) {
             if(isMainOrigin) {
@@ -84,7 +89,8 @@ public class QuestionDisplay extends AppCompatActivity implements EditList {
                     answer.setSliderValue(adapter.slider.getProgress());
                     boolean checked = adapter.checkBox.isChecked();
                     answer.setCheckboxValue(checked);
-                    answerDao.insert(answer);
+                    int answerID = (int) answerDao.insert(answer);
+                    response.addAnswer(answerID);
                 }
                 Intent intent = getIntent(QuestionDisplay.this, questionOrder+1, surveyId, isMainOrigin);
                 startActivity(intent);

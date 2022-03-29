@@ -19,4 +19,7 @@ public interface ResponseDao {
     @Query("SELECT * FROM response")
 
     List<Response> getResponses();
+
+    @Query("SELECT * FROM response where responseId = :responseId")
+    Response getResponsesByID(int responseId);
 }

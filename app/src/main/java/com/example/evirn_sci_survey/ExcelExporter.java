@@ -12,6 +12,7 @@ import androidx.annotation.RequiresApi;
 
 import com.example.evirn_sci_survey.database.Answer;
 import com.example.evirn_sci_survey.database.AnswerDao;
+import com.example.evirn_sci_survey.database.ResponseDao;
 import com.example.evirn_sci_survey.database.SurveyQuestion;
 import com.example.evirn_sci_survey.database.SurveyQuestionAnswer;
 import com.example.evirn_sci_survey.database.SurveyQuestionAnswerDao;
@@ -119,5 +120,14 @@ public class ExcelExporter {
 
         // Returns a
         return result;
+    }
+
+    public static String newExport(SurveyQuestionDao questionDao, SurveyQuestionAnswerDao questionAnswerDao,
+                                   AnswerDao answerDao, ResponseDao responseDao, int activeSurvey){
+        Log.i(TAG, "Excel Exporter has executed");
+
+        HSSFWorkbook workbook = new HSSFWorkbook(); // Added this string here
+
+        return null;
     }
 }

@@ -19,8 +19,8 @@ import java.util.ArrayList;
 @Entity(tableName = "response")
 public class Response {
 
-    public Response(ArrayList<Integer> answers) {
-        this.answers = answers;
+    public Response(int surveyID) {
+        this.surveyID = surveyID;
     }
 
     @PrimaryKey(autoGenerate = true)
@@ -29,6 +29,9 @@ public class Response {
 
     @ColumnInfo(name = "answers")
     private ArrayList<Integer> answers;
+
+    @ColumnInfo(name = "surveyID")
+    private int surveyID;
 
     public int getResponseId() {
         return mResponseId;
@@ -48,5 +51,13 @@ public class Response {
 
     public void addAnswer(int answerId){
         this.answers.add(answerId);
+    }
+
+    public int getSurveyID() {
+        return surveyID;
+    }
+
+    public void setSurveyID(int surveyID) {
+        this.surveyID = surveyID;
     }
 }

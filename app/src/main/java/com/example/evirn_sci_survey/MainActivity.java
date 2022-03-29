@@ -65,15 +65,19 @@ public class MainActivity extends AppCompatActivity {
                 SurveyQuestionDao questionDAO = SurveyRoomDatabase.getDatabase(getApplication()).surveyQuestionDao();
                 SurveyQuestionAnswerDao questionAnswerDAO = SurveyRoomDatabase.getDatabase(getApplication()).surveyQuestionAnswerDao();
                 AnswerDao answerDao = SurveyRoomDatabase.getDatabase(getApplication()).answerDao();
+                ResponseDao responseDao = SurveyRoomDatabase.getDatabase(getApplication()).responseDao();
 
+                Response response = new Response(activeSurvey);
                 SurveyQuestion question = questionDAO.getQuestionFromOrder(activeSurvey, -1);
                 List<SurveyQuestionAnswer> offeredAnswers = questionAnswerDAO.getAnswersInQuestion(activeSurvey, question.getQuestionId()); // Getting all the answers in the questions?
                 for(int i = 0; i < offeredAnswers.size(); i++) { // Inserting the answers
                     SurveyQuestionAnswer offeredAnswer = offeredAnswers.get(i);
                     Answer answer = new Answer(offeredAnswer.getMofferedAnsId(), activeSurvey, question.getQuestionId(), mFirstName.getText().toString()); // Inserts the name of the user
-                    answerDao.insert(answer);
+                    int answerID = (int) answerDao.insert(answer);
+                    response.addAnswer(answerID);
                 }
                 Intent intent = QuestionDisplay.getIntent(MainActivity.this, 1, activeSurvey, true);
+                intent.putExtra("RESPONSE_ID_CURRENT", response.getResponseId());
                 startActivity(intent);
             }
         });

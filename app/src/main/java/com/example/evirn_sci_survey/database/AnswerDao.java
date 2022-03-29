@@ -8,11 +8,14 @@ import androidx.room.Update;
 
 import java.util.List;
 
-//TODO
+
 @Dao
 public interface AnswerDao {
     @Insert
     void insert(Answer... answers);
+
+    @Insert
+    long insert(Answer answer);
 
     @Update
     void update(Answer answer);

@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText mUsername;
@@ -37,6 +38,8 @@ public class LoginActivity extends AppCompatActivity {
                 editor.putBoolean(getString(R.string.saved_logged_in_key), true);
                 editor.apply();
                 startActivity(AdminActivity.getIntent(LoginActivity.this));
+            }else{
+                Toast.makeText(LoginActivity.this, "Invalid Username or Password", Toast.LENGTH_SHORT).show();
             }
         });
     }
