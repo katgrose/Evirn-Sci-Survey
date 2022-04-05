@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
+import android.graphics.Matrix;
 
 import com.example.evirn_sci_survey.MainActivity;
 
@@ -74,7 +75,8 @@ public class Camera_Interaction extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 100){
             Bitmap camImg = (Bitmap) data.getExtras().get("data");
-            imgView.setImageBitmap(camImg);
+            Bitmap flippedImg = flipImg(camImg);
+            imgView.setImageBitmap(flippedImg);
         }
     }
 
@@ -91,5 +93,12 @@ public class Camera_Interaction extends AppCompatActivity {
 
     }
 
+    protected Bitmap flipImg(Bitmap img) {
+        Matrix matrix = new Matrix();
+        matrix.postRotate(90);
+        return Bitmap.createBitmap(
+                img, 0, 0, img.getWidth(), img.getHeight(), matrix, true
+        );
+    }
 
 }
